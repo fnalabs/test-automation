@@ -92,7 +92,7 @@ function runWatch() {
 }
 
 function runPublish() {
-    const bump = process.argv.bump;
+    const bump = $.util.env.bump;
 
     if (bump) {
         const newVer = calculateVersion(bump);
