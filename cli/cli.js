@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-var PACKAGE = require('../package');
+var PACKAGE = require('./node_modules/js-auto-test/package');
 
 var exec = require('child_process').exec;
 var program = require('commander');
