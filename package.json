@@ -1,6 +1,6 @@
 {
     "name": "js-auto-test",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "Scaffolding on top of protractor to follow the Page Object pattern for Automated UI tests.",
     "author": "Adam Eilers <adam.eilers@gmail.com>",
     "license": "MIT",
