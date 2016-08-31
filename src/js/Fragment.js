@@ -22,7 +22,7 @@ export default class Fragment {
     }
 
     setElement(selector) {
-        this[ELEMENTS].set(selector, element.all(by.css(selector)));
+        this[ELEMENTS].set(selector, element(by.css(selector)));
     }
 
     /*
@@ -42,7 +42,7 @@ export default class Fragment {
     testExists() {
         const promise = protractor.promise.fulfilled();
 
-        this[ELEMENTS].forEach(element => promise.then(this.expect(element.length).to.eventually.be.above(0)));
+        this[ELEMENTS].forEach(element => promise.then(this.expect(element).to.eventually.exist));
 
         return promise;
     }
