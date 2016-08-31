@@ -6,7 +6,7 @@
     "license": "MIT",
     "main": "index.js",
     "scripts": {
-        "prepublish": "NODE_ENV=production gulp publish"
+        "myprepublish": "NODE_ENV=production gulp publish"
     },
     "bin": "./cli/cli.js",
     "repository": {
