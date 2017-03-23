@@ -1,5 +1,7 @@
+// private property keys
 const FRAGMENTS = Symbol('fragments');
 const STEPS = Symbol('fragments');
+
 
 export default class Sequence {
 
@@ -12,7 +14,7 @@ export default class Sequence {
      * getter(s)/setter(s)
      */
     getFragment(key) {
-        this[FRAGMENTS].get(key);
+        return this[FRAGMENTS].get(key);
     }
 
     setFragment(key, object) {
@@ -24,18 +26,18 @@ export default class Sequence {
     }
 
     getUrl(url) {
-        browser.get(url);
+        return browser.get(url);
     }
 
     /*
      * run method(s)
      */
-    runSequence() {
-        const promise = protractor.promise.fulfilled();
+    async runSequence() {
+        for (let step of this[STEPS]) {
+            await step();
+        }
 
-        this[STEPS].forEach(step => promise.then(step()));
-
-        return promise;
+        return await Promise.resolve();
     }
 
 }

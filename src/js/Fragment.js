@@ -1,9 +1,12 @@
+// imports
 import chai from 'chai/should';
 import chaiAsPromised from 'chai-as-promised';
 chai.use(chaiAsPromised);
 
+// private property keys
 const ELEMENTS = Symbol('elements');
 const FRAGMENTS = Symbol('fragments');
+
 
 export default class Fragment {
 
@@ -28,22 +31,20 @@ export default class Fragment {
     /*
      * test method(s)
      */
-    testElements() {
-        const promise = protractor.promise.fulfilled();
-
+    async testElements() {
         if (this[FRAGMENTS]) {
-            this[FRAGMENTS].forEach(fragment => promise.then(fragment.testElements()));
+            for (let fragment of this[FRAGMENTS]) {
+                await fragment.testEelements();
+            }
         }
-        promise.then(this.testExists());
-
-        return promise;
+        return await this.testExists();
     }
 
-    testExists() {
-        const promise = protractor.promise.fulfilled();
+    async testExists() {
+        for (let el of this[ELEMENTS]) {
+            await this.expect(el).to.eventually.exist;
+        }
 
-        this[ELEMENTS].forEach(element => promise.then(this.expect(element).to.eventually.exist));
-
-        return promise;
+        return Promise.resolve();
     }
 }
