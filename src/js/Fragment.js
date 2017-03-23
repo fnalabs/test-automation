@@ -4,8 +4,8 @@ import chaiAsPromised from 'chai-as-promised';
 chai.use(chaiAsPromised);
 
 // private property keys
-const ELEMENTS = Symbol('elements');
-const FRAGMENTS = Symbol('fragments');
+const ELEMENTS = Symbol('ElementFinder elements defined by CSS selectors');
+const FRAGMENTS = Symbol('shared fragments within current composition');
 
 
 export default class Fragment {
@@ -14,7 +14,8 @@ export default class Fragment {
         this.expect = chai.expect;
 
         this[ELEMENTS] = new Map();
-        this[FRAGMENTS] = fragments;
+
+        this[FRAGMENTS] = fragments && Array.isArray(fragments) ? fragments : null;
     }
 
     /*
@@ -33,18 +34,14 @@ export default class Fragment {
      */
     async testElements() {
         if (this[FRAGMENTS]) {
-            for (let fragment of this[FRAGMENTS]) {
-                await fragment.testEelements();
-            }
+            await Promise.all(this[FRAGMENTS].map((fragment) => fragment.testElements()));
         }
-        return await this.testExists();
+        await this.testExists();
     }
 
     async testExists() {
-        for (let el of this[ELEMENTS]) {
-            await this.expect(el).to.eventually.exist;
-        }
-
-        return Promise.resolve();
+        await Promise.all(Array.from(this[ELEMENTS], (element) => {
+            return this.expect(element.isPresent()).to.eventually.be.true;
+        }));
     }
 }
