@@ -1,13 +1,13 @@
 // private property keys
-const FRAGMENTS = Symbol('fragments');
-const STEPS = Symbol('fragments');
+const FRAGMENTS = Symbol('Fragments to reference for testing');
+const STEPS = Symbol('steps to perform in the order they are defined');
 
 
 export default class Sequence {
 
     constructor() {
         this[FRAGMENTS] = new Map();
-        this[STEPS] = new Set();
+        this[STEPS] = [];
     }
 
     /*
@@ -17,27 +17,23 @@ export default class Sequence {
         return this[FRAGMENTS].get(key);
     }
 
-    setFragment(key, object) {
-        this[FRAGMENTS].set(key, object);
+    setFragment(key, fragment) {
+        this[FRAGMENTS].set(key, fragment);
     }
 
-    setStep(callback) {
-        this[STEPS].set(callback);
+    setStep(step) {
+        this[STEPS].push(step);
     }
 
-    getUrl(url) {
-        return browser.get(url);
+    async getUrl(url) {
+        await browser.get(url);
     }
 
     /*
      * run method(s)
      */
     async runSequence() {
-        for (let step of this[STEPS]) {
-            await step();
-        }
-
-        return await Promise.resolve();
+        await this[STEPS].reduce((promise, step) => promise.then(step()), Promise.resolve());
     }
 
 }
