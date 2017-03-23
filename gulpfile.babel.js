@@ -1,7 +1,11 @@
+import 'babel-polyfill';
+
 import PACKAGE from './package';
 
 import gulp from 'gulp';
 import loadPlugins from 'gulp-load-plugins';
+
+import del from 'del';
 
 /*******************************************************************************
  * Contants
@@ -9,6 +13,7 @@ import loadPlugins from 'gulp-load-plugins';
 
 // Tasks (prefixes, types, and suffixes)
 const BUILD = 'build:';
+const CLEAN = 'clean:';
 const LINT = 'lint:';
 const RUN = 'run:';
 
@@ -28,35 +33,40 @@ const envCheck = process.env.NODE_ENV === 'production';
 /*******************************************************************************
  * Utility method(s)
  ******************************************************************************/
-function calculateVersion(bump) {
+function calculateVersion(bump, type) {
     let ver = PACKAGE.version.split('.');
     let pre = ver[2].split('-');
 
-    switch (bump) {
+    bump = bump.split('-');
+
+    switch (bump[0]) {
         case 'MAJOR':
             ver[0]++;
+            ver[1] = 0;
+            ver[2] = 0;
             break;
 
         case 'MINOR':
             ver[1]++;
+            ver[2] = 0;
             break;
 
         case 'PATCH':
             ver[2] = pre.length > 1 ? pre[0]++ : ver[2]++;
             break;
 
-        case 'PRERELEASE':
-            ver[2] = pre.length > 1 ? `${pre[0]}-${++pre[1]}` : `${ver[2]}-1`;
-            break;
-
         default:
     }
 
-    if (bump !== 'PRERELEASE' && pre.length > 1) {
-        ver[2] = pre[0];
+    if (bump[1] === 'PRERELEASE' && type) {
+        ver[2] = pre.length > 1 ? `${pre[0]}-${type}.${pre[1]++}` : `${ver[2]}-${type}.1`;
     }
 
     return ver.join('.');
+}
+
+function clean(path) {
+    return del(path);
 }
 
 /*******************************************************************************
@@ -77,7 +87,13 @@ function lintJS(src, cacheKey) {
 function buildJS() {
     return gulp.src(SRC_SCRIPTS)
         .pipe($.sourcemaps.init())
-        .pipe($.babel())
+        .pipe($.babel({
+            plugins: [
+                'transform-es2015-destructuring',
+                'transform-runtime'
+            ],
+            presets: ['es2017']
+        }))
         .pipe($.uglify())
         .pipe($.sourcemaps.write('maps'))
         .pipe(gulp.dest(OUTPUT));
@@ -93,9 +109,10 @@ function runWatch() {
 
 function runPublish() {
     const bump = $.util.env.bump;
+    const type = $.util.env.type;
 
     if (bump) {
-        const newVer = calculateVersion(bump);
+        const newVer = calculateVersion(bump, type);
 
         return gulp.src(SRC_PACKAGE)
             .pipe($.bump({ type: newVer }))
@@ -118,13 +135,18 @@ gulp.task('default', [
     `${LINT}${GULPFILE}`,
     `${RUN}${SCRIPTS}`
 ], runWatch);
-gulp.task('publish', [`${RUN}${SCRIPTS}`], runPublish);
+gulp.task('prepublish', [`${RUN}${SCRIPTS}`]);
+gulp.task('postpublish', runPublish);
 
 // run sequences
 gulp.task(`${RUN}${SCRIPTS}`, [
+    `${CLEAN}${SCRIPTS}`,
     `${LINT}${SCRIPTS}`,
     `${BUILD}${SCRIPTS}`
 ]);
+
+// clean-specific tasks
+gulp.task(`${CLEAN}${SCRIPTS}`, clean.bind(null, OUTPUT));
 
 // lint-specific tasks
 gulp.task(`${LINT}${GULPFILE}`, lintJS.bind(null, SRC_GULPFILE, GULPFILE));
