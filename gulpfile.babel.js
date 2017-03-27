@@ -1,11 +1,12 @@
 import 'babel-polyfill';
 
-import PACKAGE from './package';
+import BUILD_CONFIG from './conf/buildConfig';
 
 import gulp from 'gulp';
 import loadPlugins from 'gulp-load-plugins';
 
 import del from 'del';
+import { Instrumenter } from 'isparta';
 
 /*******************************************************************************
  * Contants
@@ -14,17 +15,13 @@ import del from 'del';
 // Tasks (prefixes, types, and suffixes)
 const BUILD = 'build:';
 const CLEAN = 'clean:';
+const INSTRUMENT = 'instrument:';
 const LINT = 'lint:';
 const RUN = 'run:';
+const TEST = 'test:';
 
 const GULPFILE = 'gulpfile';
 const SCRIPTS = 'scripts';
-
-// Build Config
-const OUTPUT = './dist';
-const SRC_SCRIPTS = './src/**/*.js';
-const SRC_GULPFILE = `${GULPFILE}.babel.js`;
-const SRC_PACKAGE = './package.json';
 
 // Gulp + Plugins, etc.
 const $ = loadPlugins();
@@ -33,38 +30,6 @@ const envCheck = process.env.NODE_ENV === 'production';
 /*******************************************************************************
  * Utility method(s)
  ******************************************************************************/
-function calculateVersion(bump, type) {
-    let ver = PACKAGE.version.split('.');
-    let pre = ver[2].split('-');
-
-    bump = bump.split('-');
-
-    switch (bump[0]) {
-        case 'MAJOR':
-            ver[0]++;
-            ver[1] = 0;
-            ver[2] = 0;
-            break;
-
-        case 'MINOR':
-            ver[1]++;
-            ver[2] = 0;
-            break;
-
-        case 'PATCH':
-            ver[2] = pre.length > 1 ? pre[0]++ : ver[2]++;
-            break;
-
-        default:
-    }
-
-    if (bump[1] === 'PRERELEASE' && type) {
-        ver[2] = pre.length > 1 ? `${pre[0]}-${type}.${pre[1]++}` : `${ver[2]}-${type}.1`;
-    }
-
-    return ver.join('.');
-}
-
 function clean(path) {
     return del(path);
 }
@@ -82,10 +47,30 @@ function lintJS(src, cacheKey) {
 }
 
 /*******************************************************************************
+ * Test method(s)
+ ******************************************************************************/
+function instrumentScripts() {
+    return gulp.src(BUILD_CONFIG.SRC_SCRIPTS)
+        .pipe($.istanbul({
+            ...BUILD_CONFIG.ISTANBUL.INIT,
+            instrumenter: Instrumenter
+        }))
+        .pipe($.istanbul.hookRequire());
+}
+
+function testScripts() {
+    return gulp.src(BUILD_CONFIG.TST_UNIT)
+        .pipe($.babel())
+        .pipe($.mocha(BUILD_CONFIG.MOCHA))
+        .pipe($.istanbul.writeReports(BUILD_CONFIG.ISTANBUL.WRITE))
+        .on('error', () => $.util.log('unit tests failed...'));
+}
+
+/*******************************************************************************
  * Build method(s)
  ******************************************************************************/
 function buildJS() {
-    return gulp.src(SRC_SCRIPTS)
+    return gulp.src(BUILD_CONFIG.SRC_SCRIPTS)
         .pipe($.sourcemaps.init())
         .pipe($.babel({
             plugins: [
@@ -96,34 +81,16 @@ function buildJS() {
         }))
         .pipe($.uglify())
         .pipe($.sourcemaps.write('maps'))
-        .pipe(gulp.dest(OUTPUT));
+        .pipe(gulp.dest(BUILD_CONFIG.OUTPUT_SCRIPTS));
 }
 
 /*******************************************************************************
  * Runner(s)
  ******************************************************************************/
 function runWatch() {
-    gulp.watch(SRC_GULPFILE, [`${LINT}${GULPFILE}`]);
-    gulp.watch(SRC_SCRIPTS, [`${RUN}${SCRIPTS}`]);
-}
-
-function runPublish() {
-    const bump = $.util.env.bump;
-    const type = $.util.env.type;
-
-    if (bump) {
-        const newVer = calculateVersion(bump, type);
-
-        return gulp.src(SRC_PACKAGE)
-            .pipe($.bump({ type: newVer }))
-            .pipe(gulp.dest('./'))
-            .pipe($.git.add())
-            .pipe($.git.commit(`bumping ${bump} version release of v${newVer}`))
-            .pipe($.git.tag(`v${newVer}`, `tagging ${bump} version release of v${newVer}`))
-            .pipe($.git.push());
-    }
-
-    return $.util.log('You forgot to provide a version bump...');
+    gulp.watch(BUILD_CONFIG.SRC_GULPFILE, [`${LINT}${GULPFILE}`]);
+    gulp.watch(BUILD_CONFIG.SRC_SCRIPTS, [`${RUN}${SCRIPTS}`]);
+    gulp.watch(BUILD_CONFIG.TST_UNIT, [`${TEST}${SCRIPTS}`]);
 }
 
 /*******************************************************************************
@@ -135,22 +102,26 @@ gulp.task('default', [
     `${LINT}${GULPFILE}`,
     `${RUN}${SCRIPTS}`
 ], runWatch);
-gulp.task('prepublish', [`${RUN}${SCRIPTS}`]);
-gulp.task('postpublish', runPublish);
 
 // run sequences
 gulp.task(`${RUN}${SCRIPTS}`, [
     `${CLEAN}${SCRIPTS}`,
     `${LINT}${SCRIPTS}`,
+    `${INSTRUMENT}${SCRIPTS}`,
+    `${TEST}${SCRIPTS}`,
     `${BUILD}${SCRIPTS}`
 ]);
 
 // clean-specific tasks
-gulp.task(`${CLEAN}${SCRIPTS}`, clean.bind(null, OUTPUT));
+gulp.task(`${CLEAN}${SCRIPTS}`, clean.bind(null, BUILD_CONFIG.OUTPUT_DEL));
 
 // lint-specific tasks
-gulp.task(`${LINT}${GULPFILE}`, lintJS.bind(null, SRC_GULPFILE, GULPFILE));
-gulp.task(`${LINT}${SCRIPTS}`, lintJS.bind(null, SRC_SCRIPTS, SCRIPTS));
+gulp.task(`${LINT}${GULPFILE}`, lintJS.bind(null, BUILD_CONFIG.SRC_GULPFILE, GULPFILE));
+gulp.task(`${LINT}${SCRIPTS}`, lintJS.bind(null, BUILD_CONFIG.SRC_SCRIPTS, SCRIPTS));
+
+// test-specific tasks
+gulp.task(`${INSTRUMENT}${SCRIPTS}`, [`${LINT}${SCRIPTS}`], instrumentScripts);
+gulp.task(`${TEST}${SCRIPTS}`, [`${INSTRUMENT}${SCRIPTS}`], testScripts);
 
 // build-specific tasks
 gulp.task(`${BUILD}${SCRIPTS}`, [`${LINT}${SCRIPTS}`], buildJS);
