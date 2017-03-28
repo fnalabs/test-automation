@@ -4,8 +4,8 @@ import chaiAsPromised from 'chai-as-promised';
 chai.use(chaiAsPromised);
 
 // private property keys
-const ELEMENTS = Symbol('ElementFinder elements defined by CSS selectors');
-const FRAGMENTS = Symbol('shared fragments within current composition');
+const ELEMENTS = Symbol('ElementFinder Elements defined by CSS selectors');
+const FRAGMENTS = Symbol('Fragments shared within current composition');
 
 
 export default class Fragment {

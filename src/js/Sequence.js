@@ -1,6 +1,6 @@
 // private property keys
 const FRAGMENTS = Symbol('Fragments to reference for testing');
-const STEPS = Symbol('steps to perform in the order they are defined');
+const STEPS = Symbol('Steps to perform in the order they are defined');
 
 
 export default class Sequence {
