@@ -9,7 +9,8 @@
     "test": "NODE_ENV=production gulp lint:scripts",
     "preversion": "npm test",
     "version": "npm run build && git add --all",
-    "postversion": "git push && git push --tags && npm publish"
+    "postversion": "git push && git push --tags && npm publish",
+    "version:pre": "npm version $(semver $npm_package_version --increment $npm_config_increment --preid $npm_config_preid)"
   },
   "repository": {
     "type": "git",
