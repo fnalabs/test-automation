@@ -36,7 +36,7 @@
         "jslint_happy": true,
         "keep_array_indentation": false,
         "keep_function_indentation": false,
-        "max_preserve_newlines": 2,
+        "max_preserve_newlines": 3,
         "preserve_newlines": true,
         "space_after_anon_function": true,
         "space_before_conditional": true,
