@@ -71,16 +71,11 @@ function testScripts() {
  ******************************************************************************/
 function buildJS() {
     return gulp.src(BUILD_CONFIG.SRC_SCRIPTS)
-        .pipe($.sourcemaps.init())
-        .pipe($.babel({
-            plugins: [
-                'transform-es2015-destructuring',
-                'transform-runtime'
-            ],
-            presets: ['es2017']
-        }))
+        .pipe($.changed(BUILD_CONFIG.OUTPUT_SCRIPTS))
+        .pipe($.if(!envCheck, $.sourcemaps.init()))
+        .pipe($.babel(BUILD_CONFIG.BABEL))
         .pipe($.uglify())
-        .pipe($.sourcemaps.write('maps'))
+        .pipe($.if(!envCheck, $.sourcemaps.write('maps')))
         .pipe(gulp.dest(BUILD_CONFIG.OUTPUT_SCRIPTS));
 }
 
