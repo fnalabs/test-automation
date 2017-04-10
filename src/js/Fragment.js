@@ -41,7 +41,7 @@ export default class Fragment {
 
     testExists = async () => {
         await Promise.all(Array.from(this[ELEMENTS], ([selector, element]) => {
-            return this.expect(element.isPresent()).to.eventually.be.true;
+            return this.expect(element.isPresent()).to.become(true);
         }));
     }
 }
