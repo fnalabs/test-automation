@@ -1,20 +1,16 @@
 exports.config = {
-    directConnect: process.env.DIRECT_CONNECT || false,
-
-    seleniumAddress: process.env.SELENIUM_URL || 'http://localhost:4444/wd/hub',
+    directConnect: process.env.DIRECT_CONNECT || true,
 
     capabilities: {
-        browserName: process.env.TEST_BROWSER_NAME || 'phantomjs',
-        version: process.env.TEST_BROWSER_VERSION || 'ANY',
-
-        'phantomjs.binary.path': require('phantomjs').path,
-        'phantomjs.ghostdriver.cli.args': ['--loglevel=DEBUG']
+        browserName: 'chrome',
+        platform: 'ANY',
+        version: ''
     },
 
     baseUrl:
         (process.env.HTTP_PROTOCOL || 'http://') +
         (process.env.HTTP_HOST || 'localhost') +
-        (':' + process.env.HTTP_PORT || ':3000'),
+        (process.env.HTTP_PORT ? ':' + process.env.HTTP_PORT : ':3000'),
 
     framework: 'mocha',
     mochaOpts: {
@@ -22,9 +18,5 @@ exports.config = {
         timeout: 5000
     },
 
-    specs: [
-        './**/*spec.js',
-        '!./node_modules/**/*',
-        '!./bower_components/**/*'
-    ]
+    specs: ['../dist/**/*spec.js']
 };

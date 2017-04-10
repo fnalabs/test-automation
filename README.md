@@ -60,7 +60,7 @@ Here is a simple example of an implementation using `js-auto-test`. When testing
       async runSequence() {
           this.setStep(this.getUrl('/'));
 
-          super.runSequence();
+          await super.runSequence();
       }
 
   }
@@ -73,17 +73,17 @@ Here is a simple example of an implementation using `js-auto-test`. When testing
   describe('home page test', () => {
       let homeSequence;
 
-      before() {
+      before(() => {
           homeSequence = new HomeSequence();
-      }
+      });
 
       it('expects to see "some text" on the home page', async () => {
           await homeSequence.runSequence();
       });
 
-      after() {
+      after(() => {
           homeSequence = null;
-      }
+      });
   });
   ```
 
