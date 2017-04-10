@@ -32,7 +32,7 @@ export default class Sequence {
     /*
      * run method(s)
      */
-    async runSequence() {
+    runSequence = async () => {
         await this[STEPS].reduce((promise, step) => promise.then(step()), Promise.resolve());
     }
 

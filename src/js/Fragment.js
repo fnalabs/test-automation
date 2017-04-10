@@ -32,14 +32,14 @@ export default class Fragment {
     /*
      * test method(s)
      */
-    async testElements() {
+    testElements = async () => {
         if (this[FRAGMENTS]) {
             await Promise.all(this[FRAGMENTS].map((fragment) => fragment.testElements()));
         }
         await this.testExists();
     }
 
-    async testExists() {
+    testExists = async () => {
         await Promise.all(Array.from(this[ELEMENTS], (element) => {
             return this.expect(element.isPresent()).to.eventually.be.true;
         }));
