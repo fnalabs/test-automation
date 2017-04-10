@@ -26,7 +26,7 @@ export default class Fragment {
     }
 
     setElement(selector) {
-        this[ELEMENTS].set(selector, element(by.css(selector)));
+        this[ELEMENTS].set(selector, $(selector));
     }
 
     /*
@@ -40,7 +40,7 @@ export default class Fragment {
     }
 
     testExists = async () => {
-        await Promise.all(Array.from(this[ELEMENTS], (element) => {
+        await Promise.all(Array.from(this[ELEMENTS], ([selector, element]) => {
             return this.expect(element.isPresent()).to.eventually.be.true;
         }));
     }
