@@ -1,5 +1,5 @@
 // imports
-import chai from 'chai/should';
+import chai from 'chai';
 import chaiAsPromised from 'chai-as-promised';
 chai.use(chaiAsPromised);
 
