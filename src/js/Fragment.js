@@ -40,11 +40,8 @@ export default class Fragment {
     }
 
     testExists = async () => {
-        const promiseArr = [];
-        this[ELEMENTS].forEach(element => {
-            promiseArr.push(this.expect(element.isPresent()).to.eventually.be.true);
-        });
-
-        await Promise.all(promiseArr);
+        await Promise.all(Array.from(this[ELEMENTS], ([selector, element]) => {
+            return this.expect(element.isPresent()).to.eventually.be.true;
+        }));
     }
 }
