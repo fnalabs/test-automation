@@ -58,7 +58,7 @@ Here is a simple example of an implementation using `js-auto-test`. When testing
 
           this.setFragment(GOOGLE_FRAGMENT, new GoogleFragment());
 
-          this.setStep(async () => await this.getUrl('/'));
+          this.setStep(() => this.getUrl('/'));
           this.setStep(this.getFragment(GOOGLE_FRAGMENT).testElements);
       }
 
