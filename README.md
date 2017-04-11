@@ -91,23 +91,23 @@ Here is a simple example of an implementation using `js-auto-test`. When testing
 
 #### Config
 - `./conf/config.js`
-```javascript
-exports.config = {
-    directConnect: true,
-    capabilities: {
-        browserName: 'chrome',
-        platform: 'ANY',
-        version: ''
-    },
-    baseUrl: 'https://www.google.com',
-    framework: 'mocha',
-    mochaOpts: {
-        reporter: 'spec',
-        timeout: 5000
-    },
-    specs: ['../dist/**/*spec.js']
-};
-```
+  ```javascript
+  exports.config = {
+      directConnect: true,
+      capabilities: {
+          browserName: 'chrome',
+          platform: 'ANY',
+          version: ''
+      },
+      baseUrl: 'https://www.google.com',
+      framework: 'mocha',
+      mochaOpts: {
+          reporter: 'spec',
+          timeout: 5000
+      },
+      specs: ['../dist/**/*spec.js']
+  };
+  ```
   - ***NOTE:*** This configuration was used to run protractor on Linux Mint 18.1.
 
 ## Future
