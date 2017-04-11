@@ -1,8 +1,8 @@
 # Project specific
+conf
 src
 tst
 .*
-conf/buildConfig.json
 gulpfile.babel.js
 
 # Logs
