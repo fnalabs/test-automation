@@ -108,7 +108,7 @@ exports.config = {
     specs: ['../dist/**/*spec.js']
 };
 ```
-    - ***NOTE:*** This configuration was used to run protractor on Linux Mint 18.1.
+  - ***NOTE:*** This configuration was used to run protractor on Linux Mint 18.1.
 
 ## Future
 - unit tests!
