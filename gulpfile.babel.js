@@ -119,4 +119,4 @@ gulp.task(`${INSTRUMENT}${SCRIPTS}`, [`${LINT}${SCRIPTS}`], instrumentScripts);
 gulp.task(`${TEST}${SCRIPTS}`, [`${INSTRUMENT}${SCRIPTS}`], testScripts);
 
 // build-specific tasks
-gulp.task(`${BUILD}${SCRIPTS}`, [`${LINT}${SCRIPTS}`], buildJS);
+gulp.task(`${BUILD}${SCRIPTS}`, [`${TEST}${SCRIPTS}`], buildJS);
