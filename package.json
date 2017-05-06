@@ -1,7 +1,7 @@
 {
   "name": "js-auto-test",
   "version": "0.0.3-beta.3",
-  "description": "Scaffolding on top of Protractor to follow the Page Object pattern for Automated UI tests.",
+  "description": "Scaffolding on top of Protractor to follow a Page Object pattern for Automated UI tests.",
   "main": "index.js",
   "scripts": {
     "build": "NODE_ENV=production gulp run:scripts",
