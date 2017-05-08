@@ -22,6 +22,7 @@ const TEST = 'test:';
 
 const GULPFILE = 'gulpfile';
 const SCRIPTS = 'scripts';
+const TESTS = 'tests';
 
 // Gulp + Plugins, etc.
 const $ = loadPlugins();
@@ -106,13 +107,19 @@ gulp.task(`${RUN}${SCRIPTS}`, [
     `${TEST}${SCRIPTS}`,
     `${BUILD}${SCRIPTS}`
 ]);
+gulp.task(`${RUN}${TESTS}`, [
+    `${CLEAN}${SCRIPTS}`,
+    `${LINT}${SCRIPTS}`,
+    `${INSTRUMENT}${SCRIPTS}`,
+    `${TEST}${SCRIPTS}`
+]);
 
 // clean-specific tasks
 gulp.task(`${CLEAN}${SCRIPTS}`, clean.bind(null, BUILD_CONFIG.OUTPUT_DEL));
 
 // lint-specific tasks
 gulp.task(`${LINT}${GULPFILE}`, lintJS.bind(null, BUILD_CONFIG.SRC_GULPFILE, GULPFILE));
-gulp.task(`${LINT}${SCRIPTS}`, lintJS.bind(null, BUILD_CONFIG.SRC_SCRIPTS, SCRIPTS));
+gulp.task(`${LINT}${SCRIPTS}`, [`${CLEAN}${SCRIPTS}`], lintJS.bind(null, BUILD_CONFIG.SRC_SCRIPTS, SCRIPTS));
 
 // test-specific tasks
 gulp.task(`${INSTRUMENT}${SCRIPTS}`, [`${LINT}${SCRIPTS}`], instrumentScripts);
