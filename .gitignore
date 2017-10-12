@@ -1,6 +1,7 @@
 # Project specific
 dist
 tmp*
+package.tar.gz
 
 # Logs
 logs
