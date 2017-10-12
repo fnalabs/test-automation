@@ -1,3 +1,3 @@
 // expose library
-exports.Fragment = require('./dist/js/Fragment');
-exports.Sequence = require('./dist/js/Sequence');
+exports.Fragment = require('./dist/Fragment')
+exports.Sequence = require('./dist/Sequence')
