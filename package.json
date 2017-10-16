@@ -1,6 +1,6 @@
 {
   "name": "js-auto-test",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Scaffolding on top of Protractor to follow a Page Object pattern for Automated UI tests.",
   "main": "index.js",
   "scripts": {
@@ -9,6 +9,7 @@
     "coverage": "NODE_ENV=test nyc report --reporter=text-lcov > coverage.lcov && codecov",
     "dev": "nodemon -e js,json -w src -w conf -x \"npm run build\" & nodemon -e js -w tst -x \"npm test\"",
     "fix": "standard --fix",
+    "prerelease": "del package.tar.gz",
     "release": "NODE_ENV=production npm test && npm run build && node ./bin/compress",
     "pretest": "del coverage coverage.lcov .nyc_output",
     "test": "standard",
