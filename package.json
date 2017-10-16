@@ -13,9 +13,8 @@
     "pretest": "del coverage coverage.lcov .nyc_output",
     "test": "standard",
     "posttest": "NODE_ENV=test nyc --reporter=html --reporter=text mocha tst --recursive --exit",
-    "version": "NODE_ENV=production npm run release && git add --all",
-    "postversion": "NODE_ENV=production git push && git push --tags && npm publish",
-    "version:pre": "NODE_ENV=production npm version $([ -n ${npm_config_preid+x} ] && semver $npm_package_version --increment $npm_config_increment --preid $npm_config_preid || semver $npm_package_version --increment $npm_config_increment)"
+    "version": "npm run release && git add --all",
+    "postversion": "git push && git push --tags && npm publish"
   },
   "repository": {
     "type": "git",
@@ -37,7 +36,7 @@
     "dirty-chai": "~2.0.1"
   },
   "devDependencies": {
-    "archiver": "~2.0.3",
+    "archiver": "~2.1.0",
     "babel-cli": "~6.26.0",
     "babel-core": "~6.26.0",
     "babel-eslint": "~8.0.1",
@@ -45,13 +44,12 @@
     "babel-plugin-istanbul": "~4.1.5",
     "babel-plugin-transform-es2015-modules-commonjs": "~6.26.0",
     "babel-register": "~6.26.0",
-    "codecov": "~2.3.0",
+    "codecov": "~2.3.1",
     "del-cli": "~1.1.0",
     "mocha": "~4.0.1",
     "nodemon": "~1.12.1",
     "nyc": "~11.2.1",
     "proxyquire": "~1.8.0",
-    "semver": "~5.4.1",
     "sinon": "~4.0.1",
     "standard": "~10.0.3",
     "uglify-es": "~3.1.3"
