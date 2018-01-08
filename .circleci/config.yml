@@ -4,18 +4,18 @@ jobs:
   checkout_code:
     docker:
       - image: circleci/node:8.9.4
-    working_directory: ~/auto-test
+    working_directory: ~/test-automation
     steps:
       - checkout
       - save_cache:
           key: repo-{{ .Branch }}-{{ .Environment.CIRCLE_SHA1 }}
           paths:
-            - ~/auto-test
+            - ~/test-automation
 
   install_dependencies:
     docker:
       - image: circleci/node:8.9.4
-    working_directory: ~/auto-test
+    working_directory: ~/test-automation
     steps:
       - restore_cache:
           keys:
@@ -27,12 +27,12 @@ jobs:
       - save_cache:
           key: dependencies-{{ .Branch }}-{{ checksum "package.json" }}
           paths:
-            - ~/auto-test/node_modules
+            - ~/test-automation/node_modules
 
   test:
     docker:
       - image: circleci/node:8.9.4
-    working_directory: ~/auto-test
+    working_directory: ~/test-automation
     steps:
       - restore_cache:
           keys:
@@ -47,14 +47,14 @@ jobs:
           name: Run coverage report
           command: npm run coverage
       - store_test_results:
-          path: ~/auto-test/coverage.lcov
+          path: ~/test-automation/coverage.lcov
       - store_artifacts:
-          path: ~/auto-test/coverage.lcov
+          path: ~/test-automation/coverage.lcov
 
   build:
     docker:
       - image: circleci/node:8.9.4
-    working_directory: ~/auto-test
+    working_directory: ~/test-automation
     steps:
       - restore_cache:
           keys:
@@ -68,9 +68,9 @@ jobs:
       - save_cache:
           key: assets-{{ .Branch }}-{{ .Environment.CIRCLE_SHA1 }}
           paths:
-            - ~/auto-test/package.tar.gz
+            - ~/test-automation/package.tar.gz
       - store_artifacts:
-          path: ~/auto-test/package.tar.gz
+          path: ~/test-automation/package.tar.gz
 
 workflows:
   version: 2
