@@ -1,6 +1,6 @@
 {
-  "name": "auto-test",
-  "version": "2.0.1",
+  "name": "test-automation",
+  "version": "2.0.2",
   "description": "Scaffolding on top of Protractor to follow a Page Object pattern for Automated UI tests.",
   "keywords": [
     "auto",
@@ -29,12 +29,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/fnalabs/auto-test.git"
+    "url": "git+https://github.com/fnalabs/test-automation.git"
   },
   "bugs": {
-    "url": "https://github.com/fnalabs/auto-test/issues"
+    "url": "https://github.com/fnalabs/test-automation/issues"
   },
-  "homepage": "https://github.com/fnalabs/auto-test#readme",
+  "homepage": "https://github.com/fnalabs/test-automation#readme",
   "author": "Adam Eilers",
   "license": "MIT",
   "engines": {

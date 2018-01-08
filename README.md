@@ -1,4 +1,4 @@
-# auto-test
+# test-automation
 
 [![NPM Version][npm-image]][npm-url]
 [![Build Status][circle-image]][circle-url]
@@ -7,7 +7,7 @@
 [![Dev Dependency Status][devdepstat-image]][devdepstat-url]
 [![JavaScript Style Guide][style-image]][style-url]
 
-The purpose of `auto-test` is to provide some scaffolding on top of [protractor](http://www.protractortest.org/) to follow a Page Object pattern for Automated UI tests. The framework contains some classes to help structure and automate your tests. This is developed in parallel with the [auto-test-starter](https://github.com/fnalabs/auto-test-starter) kit as the framework the Docker implementation is built upon. The starter kit has more of a complete example than what is provided below.
+The purpose of `test-automation` is to provide some scaffolding on top of [protractor](http://www.protractortest.org/) to follow a Page Object pattern for Automated UI tests. The framework contains some classes to help structure and automate your tests. This is developed in parallel with the [test-automation-starter](https://github.com/fnalabs/test-automation-starter) kit as the framework the Docker implementation is built upon. The starter kit has more of a complete example than what is provided below.
 
 ## What's new?
 The project has been moved to a new organization, FnA Labs, so that it can be leveraged in future projects.
@@ -33,12 +33,12 @@ A Fragment is the Page Object, a reusable group of HTML element references that 
 
 Fragment provides basic testing functionality for getting/setting elements stored in a Map. It also provides some basic test methods to test any child fragments as well as check if the elements exist on the page. To perform more complex tests, extend the functionality of the class with additional test methods as needed. Don't forget to override [testElements](./src/js/Fragment.js#L47) to call your new methods after calling `await super.testElements()` to run the provided test methods.
 - ***NOTE:*** Elements must be defined on a Fragment object before any tests can occur.
-- ***NOTE:*** Any additional action methods/classes will need to be added per use case, [requests](https://github.com/fnalabs/auto-test/issues) for common Actions are welcome. ([element api](http://www.protractortest.org/#/api?view=ElementFinder), [element.all api](http://www.protractortest.org/#/api?view=ElementArrayFinder))
+- ***NOTE:*** Any additional action methods/classes will need to be added per use case, [requests](https://github.com/fnalabs/test-automation/issues) for common Actions are welcome. ([element api](http://www.protractortest.org/#/api?view=ElementFinder), [element.all api](http://www.protractortest.org/#/api?view=ElementArrayFinder))
 
 ### Sequence
 A Sequence defines the steps an automated UI test specification needs to perform. It is also responsible to setting the entry point to the test sequence. It provides a Fragment cache to reference for each step in the sequence that will need to be defined.
 
-I've started out with some basics and will be adding more over time (and open to [feature requests](https://github.com/fnalabs/auto-test/issues)).
+I've started out with some basics and will be adding more over time (and open to [feature requests](https://github.com/fnalabs/test-automation/issues)).
 
 ### API
 The information below provides more details on each objects' methods in the interim until I've integrated with a documentation generator.
@@ -202,7 +202,7 @@ sequence.runSequence()
 ```
 
 ## Example
-Here is a simple example of an implementation using `auto-test`. When testing a larger site with many tests, you will want to consider some structure around your code. I've added a suggested minimal folder structure below. I have also created a [starter kit](https://github.com/fnalabs/auto-test-starter) that contains a more advanced test than below with additional support scripts and environment/execution specifics.
+Here is a simple example of an implementation using `test-automation`. When testing a larger site with many tests, you will want to consider some structure around your code. I've added a suggested minimal folder structure below. I have also created a [starter kit](https://github.com/fnalabs/test-automation-starter) that contains a more advanced test than below with additional support scripts and environment/execution specifics.
 
 #### Code
 - `./constants.js`
@@ -218,7 +218,7 @@ Here is a simple example of an implementation using `auto-test`. When testing a 
   ```javascript
   import { IMG_SELECTOR } from '../constants';
 
-  import { Fragment } from 'auto-test';
+  import { Fragment } from 'test-automation';
 
 
   export default class GoogleFragment extends Fragment {
@@ -236,7 +236,7 @@ Here is a simple example of an implementation using `auto-test`. When testing a 
   ```javascript
   import { GOOGLE_FRAGMENT } from '../constants';
 
-  import { Sequence } from 'auto-test';
+  import { Sequence } from 'test-automation';
 
   import GoogleFragment from '../fragments/GoogleFragment';
 
@@ -302,7 +302,7 @@ Here is a simple example of an implementation using `auto-test`. When testing a 
 
 ## Future
 - integrate with documentation generators!
-- feature requests via [issues](https://github.com/fnalabs/auto-test/issues)
+- feature requests via [issues](https://github.com/fnalabs/test-automation/issues)
 
 ## Changelog
 #### v2.0.2
@@ -322,20 +322,20 @@ Here is a simple example of an implementation using `auto-test`. When testing a 
 #### v1.0.0
 - initial release
 
-[npm-image]: https://img.shields.io/npm/v/auto-test.svg
-[npm-url]: https://www.npmjs.com/package/auto-test
+[npm-image]: https://img.shields.io/npm/v/test-automation.svg
+[npm-url]: https://www.npmjs.com/package/test-automation
 
-[circle-image]: https://img.shields.io/circleci/project/github/fnalabs/auto-test.svg
-[circle-url]: https://circleci.com/gh/fnalabs/auto-test
+[circle-image]: https://img.shields.io/circleci/project/github/fnalabs/test-automation.svg
+[circle-url]: https://circleci.com/gh/fnalabs/test-automation
 
-[codecov-image]: https://img.shields.io/codecov/c/github/fnalabs/auto-test.svg
-[codecov-url]: https://codecov.io/gh/fnalabs/auto-test
+[codecov-image]: https://img.shields.io/codecov/c/github/fnalabs/test-automation.svg
+[codecov-url]: https://codecov.io/gh/fnalabs/test-automation
 
-[depstat-image]: https://img.shields.io/david/fnalabs/auto-test.svg
-[depstat-url]: https://david-dm.org/fnalabs/auto-test
+[depstat-image]: https://img.shields.io/david/fnalabs/test-automation.svg
+[depstat-url]: https://david-dm.org/fnalabs/test-automation
 
-[devdepstat-image]: https://img.shields.io/david/dev/fnalabs/auto-test.svg
-[devdepstat-url]: https://david-dm.org/fnalabs/auto-test?type=dev
+[devdepstat-image]: https://img.shields.io/david/dev/fnalabs/test-automation.svg
+[devdepstat-url]: https://david-dm.org/fnalabs/test-automation?type=dev
 
 [style-image]: https://img.shields.io/badge/code_style-standard-brightgreen.svg
 [style-url]: https://standardjs.com
