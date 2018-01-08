@@ -3,19 +3,19 @@ version: 2.0
 jobs:
   checkout_code:
     docker:
-      - image: circleci/node:8.7.0
-    working_directory: ~/js-auto-test
+      - image: circleci/node:8.9.4
+    working_directory: ~/auto-test
     steps:
       - checkout
       - save_cache:
           key: repo-{{ .Branch }}-{{ .Environment.CIRCLE_SHA1 }}
           paths:
-            - ~/js-auto-test
+            - ~/auto-test
 
   install_dependencies:
     docker:
-      - image: circleci/node:8.7.0
-    working_directory: ~/js-auto-test
+      - image: circleci/node:8.9.4
+    working_directory: ~/auto-test
     steps:
       - restore_cache:
           keys:
@@ -27,12 +27,12 @@ jobs:
       - save_cache:
           key: dependencies-{{ .Branch }}-{{ checksum "package.json" }}
           paths:
-            - ~/js-auto-test/node_modules
+            - ~/auto-test/node_modules
 
   test:
     docker:
-      - image: circleci/node:8.7.0
-    working_directory: ~/js-auto-test
+      - image: circleci/node:8.9.4
+    working_directory: ~/auto-test
     steps:
       - restore_cache:
           keys:
@@ -47,14 +47,14 @@ jobs:
           name: Run coverage report
           command: npm run coverage
       - store_test_results:
-          path: ~/js-auto-test/coverage.lcov
+          path: ~/auto-test/coverage.lcov
       - store_artifacts:
-          path: ~/js-auto-test/coverage.lcov
+          path: ~/auto-test/coverage.lcov
 
   build:
     docker:
-      - image: circleci/node:8.7.0
-    working_directory: ~/js-auto-test
+      - image: circleci/node:8.9.4
+    working_directory: ~/auto-test
     steps:
       - restore_cache:
           keys:
@@ -68,9 +68,9 @@ jobs:
       - save_cache:
           key: assets-{{ .Branch }}-{{ .Environment.CIRCLE_SHA1 }}
           paths:
-            - ~/js-auto-test/package.tar.gz
+            - ~/auto-test/package.tar.gz
       - store_artifacts:
-          path: ~/js-auto-test/package.tar.gz
+          path: ~/auto-test/package.tar.gz
 
 workflows:
   version: 2

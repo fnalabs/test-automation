@@ -1,4 +1,4 @@
-# js-auto-test
+# auto-test
 
 [![NPM Version][npm-image]][npm-url]
 [![Build Status][circle-image]][circle-url]
@@ -7,16 +7,15 @@
 [![Dev Dependency Status][devdepstat-image]][devdepstat-url]
 [![JavaScript Style Guide][style-image]][style-url]
 
-The purpose of `js-auto-test` is to provide some scaffolding on top of [protractor](http://www.protractortest.org/) to follow a Page Object pattern for Automated UI tests. The Library contains some classes to help structure and automate your tests. This is developed in parallel with the [docker-auto-test-starter](https://github.com/aeilers/docker-auto-test-starter) kit as the library that the Docker implementation is built upon. The starter kit has more of a complete example than what is provided below.
+The purpose of `auto-test` is to provide some scaffolding on top of [protractor](http://www.protractortest.org/) to follow a Page Object pattern for Automated UI tests. The framework contains some classes to help structure and automate your tests. This is developed in parallel with the [auto-test-starter](https://github.com/fnalabs/auto-test-starter) kit as the framework the Docker implementation is built upon. The starter kit has more of a complete example than what is provided below.
 
 ## What's new?
-v2 comes with many enhancements including:
-- supporting the latest version of Node and ES2017+ without a babel transpile
-- more functionality with more common test methods and action methods on Fragment
-- added some type checking and unit tests
+The project has been moved to a new organization, FnA Labs, so that it can be leveraged in future projects.
+The name of the project has been changed due to rebranding in an effort to improve project namespaces in the organization.
+The original project can still be found [here](https://www.npmjs.com/package/js-auto-test).
 
 #### Contents
-- [Library](#library)
+- [Framework](#framework)
   - [Fragment](#fragment)
   - [Sequence](#sequence)
   - [API](#api)
@@ -24,21 +23,22 @@ v2 comes with many enhancements including:
   - [Code](#code)
   - [Config](#config)
 - [Future](#future)
+- [Changelog](#changelog)
 
-## Library
-The library consists of two main classes: [Fragment](./src/js/Fragment.js) and [Sequence](./src/js/Sequence.js).
+## Framework
+The framework consists of two main classes: [Fragment](./src/js/Fragment.js) and [Sequence](./src/js/Sequence.js).
 
 ### Fragment
-A Fragment is a reusable group of HTML element references that can be tested. For instance, a top level navigation bar is a reusable group of HTML elements that could show up on many pages. It can be used as a shared Fragment component that can be associated with other Fragments. If you have unique content on the home page, you can make a home page Fragment that is associated with your navigation Fragment above. The purpose of a Fragment is for testing its elements and optionally performing actions against its elements.
+A Fragment is the Page Object, a reusable group of HTML element references that can be tested. For instance, a top level navigation bar is a reusable group of HTML elements that could show up on many pages. It can be used as a shared Fragment component that can be associated with other Fragments. If you have unique content on the home page, you can make a home page Fragment that is associated with your navigation Fragment above. The purpose of a Fragment is for testing its elements and optionally performing actions against its elements.
 
 Fragment provides basic testing functionality for getting/setting elements stored in a Map. It also provides some basic test methods to test any child fragments as well as check if the elements exist on the page. To perform more complex tests, extend the functionality of the class with additional test methods as needed. Don't forget to override [testElements](./src/js/Fragment.js#L47) to call your new methods after calling `await super.testElements()` to run the provided test methods.
 - ***NOTE:*** Elements must be defined on a Fragment object before any tests can occur.
-- ***NOTE:*** Any additional action methods/classes will need to be added per use case, [requests](https://github.com/aeilers/js-auto-test/issues) for common Actions are welcome. ([element api](http://www.protractortest.org/#/api?view=ElementFinder), [element.all api](http://www.protractortest.org/#/api?view=ElementArrayFinder))
+- ***NOTE:*** Any additional action methods/classes will need to be added per use case, [requests](https://github.com/fnalabs/auto-test/issues) for common Actions are welcome. ([element api](http://www.protractortest.org/#/api?view=ElementFinder), [element.all api](http://www.protractortest.org/#/api?view=ElementArrayFinder))
 
 ### Sequence
 A Sequence defines the steps an automated UI test specification needs to perform. It is also responsible to setting the entry point to the test sequence. It provides a Fragment cache to reference for each step in the sequence that will need to be defined.
 
-I've started out with some basics and will be adding more over time (and open to [feature requests](https://github.com/aeilers/js-auto-test/issues)).
+I've started out with some basics and will be adding more over time (and open to [feature requests](https://github.com/fnalabs/auto-test/issues)).
 
 ### API
 The information below provides more details on each objects' methods in the interim until I've integrated with a documentation generator.
@@ -202,7 +202,7 @@ sequence.runSequence()
 ```
 
 ## Example
-Here is a simple example of an implementation using `js-auto-test`. When testing a larger site with many tests, you will want to consider some structure around your code. I've added a suggested minimal folder structure below. I have also created a [starter kit](https://github.com/aeilers/docker-auto-test-starter) that contains a more advanced test than below with additional support scripts and environment/execution specifics.
+Here is a simple example of an implementation using `auto-test`. When testing a larger site with many tests, you will want to consider some structure around your code. I've added a suggested minimal folder structure below. I have also created a [starter kit](https://github.com/fnalabs/auto-test-starter) that contains a more advanced test than below with additional support scripts and environment/execution specifics.
 
 #### Code
 - `./constants.js`
@@ -218,7 +218,7 @@ Here is a simple example of an implementation using `js-auto-test`. When testing
   ```javascript
   import { IMG_SELECTOR } from '../constants';
 
-  import { Fragment } from 'js-auto-test';
+  import { Fragment } from 'auto-test';
 
 
   export default class GoogleFragment extends Fragment {
@@ -236,7 +236,7 @@ Here is a simple example of an implementation using `js-auto-test`. When testing
   ```javascript
   import { GOOGLE_FRAGMENT } from '../constants';
 
-  import { Sequence } from 'js-auto-test';
+  import { Sequence } from 'auto-test';
 
   import GoogleFragment from '../fragments/GoogleFragment';
 
@@ -302,22 +302,40 @@ Here is a simple example of an implementation using `js-auto-test`. When testing
 
 ## Future
 - integrate with documentation generators!
-- feature requests via [issues](https://github.com/aeilers/js-auto-test/issues)
+- feature requests via [issues](https://github.com/fnalabs/auto-test/issues)
 
-[npm-image]: https://img.shields.io/npm/v/js-auto-test.svg
-[npm-url]: https://www.npmjs.com/package/js-auto-test
+## Changelog
+#### v2.0.2
+- updated name, license, and organization
+- updated dependencies
 
-[circle-image]: https://img.shields.io/circleci/project/github/aeilers/js-auto-test.svg
-[circle-url]: https://circleci.com/gh/aeilers/js-auto-test
+#### v2.0.1
+- updated dependencies and configurations
 
-[codecov-image]: https://img.shields.io/codecov/c/github/aeilers/js-auto-test.svg
-[codecov-url]: https://codecov.io/gh/aeilers/js-auto-test
+#### v2.0.0
+- added test methods on Fragment for common tests ([testText](#async-testtext-selector-text), [testState](#async-teststate-selector-state), [testAttribute](#async-testattribute-selector-attribute-text))
+- added action methods on Fragment for common actions ([elementClear](#async-elementclear-selector), [elementClick](#async-elementclick-selector), [elementSendKeys](#async-elementsendkeys-selector-keys), and [elementSubmit](#async-elementsubmit-selector))
+- updated Babel config to support native ES2017+ features
+- updated dependencies
+- removed Gulp
 
-[depstat-image]: https://img.shields.io/david/aeilers/js-auto-test.svg
-[depstat-url]: https://david-dm.org/aeilers/js-auto-test
+#### v1.0.0
+- initial release
 
-[devdepstat-image]: https://img.shields.io/david/dev/aeilers/js-auto-test.svg
-[devdepstat-url]: https://david-dm.org/aeilers/js-auto-test?type=dev
+[npm-image]: https://img.shields.io/npm/v/auto-test.svg
+[npm-url]: https://www.npmjs.com/package/auto-test
+
+[circle-image]: https://img.shields.io/circleci/project/github/fnalabs/auto-test.svg
+[circle-url]: https://circleci.com/gh/fnalabs/auto-test
+
+[codecov-image]: https://img.shields.io/codecov/c/github/fnalabs/auto-test.svg
+[codecov-url]: https://codecov.io/gh/fnalabs/auto-test
+
+[depstat-image]: https://img.shields.io/david/fnalabs/auto-test.svg
+[depstat-url]: https://david-dm.org/fnalabs/auto-test
+
+[devdepstat-image]: https://img.shields.io/david/dev/fnalabs/auto-test.svg
+[devdepstat-url]: https://david-dm.org/fnalabs/auto-test?type=dev
 
 [style-image]: https://img.shields.io/badge/code_style-standard-brightgreen.svg
 [style-url]: https://standardjs.com

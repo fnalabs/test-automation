@@ -1,7 +1,17 @@
 {
-  "name": "js-auto-test",
+  "name": "auto-test",
   "version": "2.0.1",
   "description": "Scaffolding on top of Protractor to follow a Page Object pattern for Automated UI tests.",
+  "keywords": [
+    "auto",
+    "automation",
+    "protractor",
+    "selenium",
+    "test",
+    "testing",
+    "webdriver",
+    "webdriverjs"
+  ],
   "main": "index.js",
   "scripts": {
     "prebuild": "del dist",
@@ -13,19 +23,19 @@
     "release": "NODE_ENV=production npm test && npm run build && node ./bin/compress",
     "pretest": "del coverage coverage.lcov .nyc_output",
     "test": "standard",
-    "posttest": "NODE_ENV=test nyc --reporter=html --reporter=text mocha tst --recursive --exit",
+    "posttest": "NODE_ENV=test nyc --reporter=html --reporter=text mocha --recursive --exit 'tst/**/*.spec.js'",
     "version": "npm run release && git add --all",
     "postversion": "git push && git push --tags && npm publish"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/aeilers/js-auto-test.git"
+    "url": "git+https://github.com/fnalabs/auto-test.git"
   },
   "bugs": {
-    "url": "https://github.com/aeilers/js-auto-test/issues"
+    "url": "https://github.com/fnalabs/auto-test/issues"
   },
-  "homepage": "https://github.com/aeilers/js-auto-test#readme",
-  "author": "Adam Eilers <adam.eilers@gmail.com>",
+  "homepage": "https://github.com/fnalabs/auto-test#readme",
+  "author": "Adam Eilers",
   "license": "MIT",
   "engines": {
     "node": ">=8",
@@ -40,20 +50,20 @@
     "archiver": "~2.1.0",
     "babel-cli": "~6.26.0",
     "babel-core": "~6.26.0",
-    "babel-eslint": "~8.0.1",
+    "babel-eslint": "~8.1.2",
     "babel-plugin-add-module-exports": "~0.2.1",
     "babel-plugin-istanbul": "~4.1.5",
     "babel-plugin-transform-es2015-modules-commonjs": "~6.26.0",
     "babel-register": "~6.26.0",
-    "codecov": "~2.3.1",
+    "codecov": "~3.0.0",
     "del-cli": "~1.1.0",
-    "mocha": "~4.0.1",
-    "nodemon": "~1.12.1",
-    "nyc": "~11.2.1",
+    "mocha": "~4.1.0",
+    "nodemon": "~1.14.8",
+    "nyc": "~11.4.1",
     "proxyquire": "~1.8.0",
-    "sinon": "~4.0.1",
+    "sinon": "~4.1.3",
     "standard": "~10.0.3",
-    "uglify-es": "~3.1.3"
+    "uglify-es": "~3.3.4"
   },
   "nyc": {
     "check-coverage": true,
