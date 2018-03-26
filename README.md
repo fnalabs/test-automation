@@ -10,7 +10,7 @@
 The purpose of `test-automation` is to provide some scaffolding on top of [protractor](http://www.protractortest.org/) to follow a Page Object pattern for Automated browser tests. The framework contains some classes to help structure and automate your tests. This is developed in parallel with the [test-automation-starter](https://github.com/fnalabs/test-automation-starter) kit as the framework the Docker implementation is built upon. The starter kit has more of a complete example than what is provided below. The intent of the project is to provide the necessary tools and a starting point to rapidly develop automated browser tests.
 
 ## What's new?
-[Documentation](https://fnalabs.github.io/test-automation)!
+[Documentation](https://fnalabs.github.io/test-automation/)!
 
 #### Contents
 - [Installing](#installing)
@@ -45,7 +45,7 @@ A Sequence defines the steps an automated browser test specification needs to pe
 
 I've started out with some basics and will be adding more over time (and open to [feature requests](https://github.com/fnalabs/test-automation/issues)).
 
-### [API](https://fnalabs.github.io/test-automation)
+### [API](https://fnalabs.github.io/test-automation/)
 Click on the link in the header above to go to the API page.
 
 ## Example
