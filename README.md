@@ -1,20 +1,19 @@
 # test-automation
 
 [![NPM Version][npm-image]][npm-url]
+[![License][license-image]][license-url]
 [![Build Status][circle-image]][circle-url]
 [![Code Coverage][codecov-image]][codecov-url]
 [![Dependency Status][depstat-image]][depstat-url]
-[![Dev Dependency Status][devdepstat-image]][devdepstat-url]
 [![JavaScript Style Guide][style-image]][style-url]
 
-The purpose of `test-automation` is to provide some scaffolding on top of [protractor](http://www.protractortest.org/) to follow a Page Object pattern for Automated UI tests. The framework contains some classes to help structure and automate your tests. This is developed in parallel with the [test-automation-starter](https://github.com/fnalabs/test-automation-starter) kit as the framework the Docker implementation is built upon. The starter kit has more of a complete example than what is provided below.
+The purpose of `test-automation` is to provide some scaffolding on top of [protractor](http://www.protractortest.org/) to follow a Page Object pattern for Automated browser tests. The framework contains some classes to help structure and automate your tests. This is developed in parallel with the [test-automation-starter](https://github.com/fnalabs/test-automation-starter) kit as the framework the Docker implementation is built upon. The starter kit has more of a complete example than what is provided below. The intent of the project is to provide the necessary tools and a starting point to rapidly develop automated browser tests.
 
 ## What's new?
-The project has been moved to a new organization, FnA Labs, so that it can be leveraged in future projects.
-The name of the project has been changed due to rebranding in an effort to improve project namespaces in the organization.
-The original project can still be found [here](https://www.npmjs.com/package/js-auto-test).
+[Documentation](https://fnalabs.github.io/test-automation)!
 
 #### Contents
+- [Installing](#installing)
 - [Framework](#framework)
   - [Fragment](#fragment)
   - [Sequence](#sequence)
@@ -25,181 +24,29 @@ The original project can still be found [here](https://www.npmjs.com/package/js-
 - [Future](#future)
 - [Changelog](#changelog)
 
+## Installing
+Install using `npm`:
+```sh
+$ npm install test-automation
+```
+
 ## Framework
 The framework consists of two main classes: [Fragment](./src/js/Fragment.js) and [Sequence](./src/js/Sequence.js).
 
 ### Fragment
 A Fragment is the Page Object, a reusable group of HTML element references that can be tested. For instance, a top level navigation bar is a reusable group of HTML elements that could show up on many pages. It can be used as a shared Fragment component that can be associated with other Fragments. If you have unique content on the home page, you can make a home page Fragment that is associated with your navigation Fragment above. The purpose of a Fragment is for testing its elements and optionally performing actions against its elements.
 
-Fragment provides basic testing functionality for getting/setting elements stored in a Map. It also provides some basic test methods to test any child fragments as well as check if the elements exist on the page. To perform more complex tests, extend the functionality of the class with additional test methods as needed. Don't forget to override [testElements](./src/js/Fragment.js#L47) to call your new methods after calling `await super.testElements()` to run the provided test methods.
+Fragment provides basic testing functionality for getting/setting elements stored in a Map. It also provides some basic test methods to test any child fragments as well as check if the elements exist on the page. To perform more complex tests, extend the functionality of the class with additional test methods as needed. Don't forget to override [testElements](./src/js/Fragment.js#L87-L96) to call your new methods after calling `await super.testElements()` to run the provided test methods.
 - ***NOTE:*** Elements must be defined on a Fragment object before any tests can occur.
 - ***NOTE:*** Any additional action methods/classes will need to be added per use case, [requests](https://github.com/fnalabs/test-automation/issues) for common Actions are welcome. ([element api](http://www.protractortest.org/#/api?view=ElementFinder), [element.all api](http://www.protractortest.org/#/api?view=ElementArrayFinder))
 
 ### Sequence
-A Sequence defines the steps an automated UI test specification needs to perform. It is also responsible to setting the entry point to the test sequence. It provides a Fragment cache to reference for each step in the sequence that will need to be defined.
+A Sequence defines the steps an automated browser test specification needs to perform. It is also responsible to setting the entry point to the test sequence. It provides a Fragment cache to reference for each step in the sequence that will need to be defined.
 
 I've started out with some basics and will be adding more over time (and open to [feature requests](https://github.com/fnalabs/test-automation/issues)).
 
-### API
-The information below provides more details on each objects' methods in the interim until I've integrated with a documentation generator.
-
-#### Fragment
-##### `getElement (selector)`
-Gets the element stored in the Fragment's Map.
-- params:
-  - `selector` - `String` that represents the CSS selector for the element
-- returns: Protractor `element` or `element.all`
-```javascript
-fragment.getElement('#test')
-```
-
-##### `setElement (selector, all = false)`
-Sets the element to store in the Fragment's Map of elements.
-- params:
-  - `selector` - `String` that represents the CSS selector for the element
-  - `all` - Truthy value to toggle selecting a single element if false or all elements if true
-- returns: Protractor `element` or `element.all`
-```javascript
-fragment.setElement('#test')
-fragment.setElement('#test .all', true)
-```
-
-##### `async testElements ()`
-Invokes the tests for all elements defined in a Fragment and any child Fragments referenced in the original Fragment. By default it only tests if the elements exist on the page. This should be overridden to add any additional tests specific to the Fragment.
-- returns: `Promise`
-```javascript
-fragment.testElements()
-```
-
-##### `async testExists ()`
-Tests if all elements defined in a Fragment exist on the page. This is called in `testElements` above.
-- returns: `Promise`
-```javascript
-fragment.testExists()
-```
-
-##### `async testText (selector, text)`
-Tests the text of an element defined in a Fragment.
-- params:
-  - `selector` - `String` that represents the CSS selector for the element
-  - `text` - `String` that represents the expected text of the element
-- returns: `Promise`
-```javascript
-fragment.testText('#test', 'text')
-```
-
-##### `async testState (selector, state)`
-Tests the state of an element defined in a Fragment.
-- params:
-  - `selector` - `String` that represents the CSS selector for the element
-  - `state` - `String|Array` that represents the possible state(s) of the element
-    - `displayed`
-    - `enabled`
-    - `selected`
-- returns: `Promise`
-```javascript
-fragment.testState('#test', 'displayed')
-fragment.testState('#test', ['displayed', 'enabled', 'selected'])
-```
-
-##### `async testAttribute (selector, attribute, text)`
-Tests any attribute of an element defined in a Fragment.
-- params:
-  - `selector` - `String` that represents the CSS selector for the element
-  - `attribute` - `String` that represents the attribute you want to test
-  - `text` - `String` that represents the expected text of the element's attribute
-- returns: `Promise`
-```javascript
-fragment.testAttribute('#test', 'type', 'text')
-```
-
-##### `async elementClear (selector)`
-Clears any value set in a form text input element defined in a Fragment.
-- params:
-  - `selector` - `String` that represents the CSS selector for the element
-- returns: `Promise`
-```javascript
-fragment.elementClear('#test')
-```
-
-##### `async elementClick (selector)`
-Clicks an element defined in a Fragment.
-- params:
-  - `selector` - `String` that represents the CSS selector for the element
-- returns: `Promise`
-```javascript
-fragment.elementClick('#test')
-```
-
-##### `async elementSendKeys (selector, keys)`
-Sends keys to an element defined in a Fragment. This is useful for filling in form data or other complex keystrokes that a user may perform on a element.
-- params:
-  - `selector` - `String` that represents the CSS selector for the element
-  - `keys` - `String|Array` that represents the desired keys to press
-    - ***NOTE:*** refer to Protractor's [sendKeys](http://www.protractortest.org/#/api?view=webdriver.WebElement.prototype.sendKeys) documentation for more information on special keys.
-- returns: `Promise`
-```javascript
-fragment.elementSendKeys('#test', 'some text')
-```
-
-##### `async elementSubmit (selector)`
-Submits a form element defined in a Fragment.
-- params:
-  - `selector` - `String` that represents the CSS selector for the element
-- returns: `Promise`
-```javascript
-fragment.elementSubmit('#test')
-```
-
-#### Sequence
-##### `getFragment (key)`
-Gets the fragment stored in the Sequence's Map.
-- params:
-  - `key` - `String|Symbol` that represents the fragment
-- returns: `fragment`
-```javascript
-sequence.getFragment('test')
-```
-
-##### `setFragment (key, fragment)`
-Sets the fragment to store in the Sequence's Map.
-- params:
-  - `key` - `String|Symbol` that represents the fragment
-  - `fragment` - Fragment object
-- returns: `fragment`
-```javascript
-sequence.setFragment('test', new Fragment())
-```
-
-##### `setStep (step)`
-Sets the test steps to store in the Sequence's Array.
-- params:
-  - `step` - `Function|Array` to return an AsyncFunction that represents a test step
-- returns: `undefined`
-```javascript
-sequence.setStep(() => sequence.getUrl('/'))
-sequence.setStep([
-  () => sequence.getUrl('/'),
-  () => fragment.testElements(),
-  () => fragment.elementClick('#testLink')
-])
-```
-
-##### `async getUrl (url)`
-Gets the page to test.
-- params:
-  - `url` - `String` that represents the relative or absolute URL of a page to test
-- returns: `Promise`
-```javascript
-sequence.getUrl('/home')
-```
-
-##### `async runSequence ()`
-Runs the array of steps defined in the Sequence.
-- returns: `Promise`
-```javascript
-sequence.runSequence()
-```
+### [API](https://fnalabs.github.io/test-automation)
+Click on the link in the header above to go to the API page.
 
 ## Example
 Here is a simple example of an implementation using `test-automation`. When testing a larger site with many tests, you will want to consider some structure around your code. I've added a suggested minimal folder structure below. I have also created a [starter kit](https://github.com/fnalabs/test-automation-starter) that contains a more advanced test than below with additional support scripts and environment/execution specifics.
@@ -208,25 +55,23 @@ Here is a simple example of an implementation using `test-automation`. When test
 - `./constants.js`
   ```javascript
   // Selectors
-  export const IMG_SELECTOR = '#hplogo';
+  export const IMG_SELECTOR = '#hplogo'
 
   // Fragments
-  export const GOOGLE_FRAGMENT = Symbol('google fragment');
+  export const GOOGLE_FRAGMENT = Symbol('google fragment')
   ```
 
 - `./fragments/GoogleFragment.js`
   ```javascript
-  import { IMG_SELECTOR } from '../constants';
-
-  import { Fragment } from 'test-automation';
-
+  import { IMG_SELECTOR } from '../constants'
+  import { Fragment } from 'test-automation'
 
   export default class GoogleFragment extends Fragment {
 
     constructor(fragments) {
-      super(fragments);
+      super(fragments)
 
-      this.setElement(IMG_SELECTOR);
+      this.setElement(IMG_SELECTOR)
     }
 
   }
@@ -234,22 +79,19 @@ Here is a simple example of an implementation using `test-automation`. When test
 
 - `./sequences/GoogleSequence.js`
   ```javascript
-  import { GOOGLE_FRAGMENT } from '../constants';
-
-  import { Sequence } from 'test-automation';
-
-  import GoogleFragment from '../fragments/GoogleFragment';
-
+  import { GOOGLE_FRAGMENT } from '../constants'
+  import { Sequence } from 'test-automation'
+  import GoogleFragment from '../fragments/GoogleFragment'
 
   export default class GoogleSequence extends Sequence {
 
     constructor() {
-      super();
+      super()
 
-      this.setFragment(GOOGLE_FRAGMENT, new GoogleFragment());
+      this.setFragment(GOOGLE_FRAGMENT, new GoogleFragment())
 
-      this.setStep(() => this.getUrl('/'));
-      this.setStep(this.getFragment(GOOGLE_FRAGMENT).testElements);
+      this.setStep(() => this.getUrl('/'))
+      this.setStep(this.getFragment(GOOGLE_FRAGMENT).testElements)
     }
 
   }
@@ -257,26 +99,24 @@ Here is a simple example of an implementation using `test-automation`. When test
 
 - `./specs/google.spec.js`
   ```javascript
-  import GoogleSequence from '../sequences/GoogleSequence';
-
-  browser.ignoreSynchronization = true;
-
+  import GoogleSequence from '../sequences/GoogleSequence'
+  browser.ignoreSynchronization = true
 
   describe('google homepage img test', () => {
-    let googleSequence;
+    let googleSequence
 
     before(() => {
-      googleSequence = new GoogleSequence();
-    });
+      googleSequence = new GoogleSequence()
+    })
 
     it('expects img to exist on the google homepage', async () => {
-      await googleSequence.runSequence();
-    });
+      await googleSequence.runSequence()
+    })
 
     after(() => {
-      googleSequence = null;
-    });
-  });
+      googleSequence = null
+    })
+  })
   ```
 
 #### Config
@@ -296,15 +136,17 @@ Here is a simple example of an implementation using `test-automation`. When test
       timeout: 5000
     },
     specs: ['../dist/**/*spec.js']
-  };
+  }
   ```
   - ***NOTE:*** This configuration was used to run protractor on Linux Mint 18.1.
 
 ## Future
-- integrate with documentation generators!
 - feature requests via [issues](https://github.com/fnalabs/test-automation/issues)
 
 ## Changelog
+#### v2.0.3
+- added documentation
+
 #### v2.0.2
 - updated name, license, and organization
 - updated dependencies
@@ -325,17 +167,17 @@ Here is a simple example of an implementation using `test-automation`. When test
 [npm-image]: https://img.shields.io/npm/v/test-automation.svg
 [npm-url]: https://www.npmjs.com/package/test-automation
 
+[license-image]: https://img.shields.io/badge/License-MIT-blue.svg
+[license-url]: https://github.com/fnalabs/test-automation/blob/master/LICENSE
+
 [circle-image]: https://img.shields.io/circleci/project/github/fnalabs/test-automation.svg
 [circle-url]: https://circleci.com/gh/fnalabs/test-automation
 
-[codecov-image]: https://img.shields.io/codecov/c/github/fnalabs/test-automation.svg
+[codecov-image]: https://img.shields.io/codecov/c/github/fnalabs/test-automation/master.svg
 [codecov-url]: https://codecov.io/gh/fnalabs/test-automation
 
 [depstat-image]: https://img.shields.io/david/fnalabs/test-automation.svg
 [depstat-url]: https://david-dm.org/fnalabs/test-automation
-
-[devdepstat-image]: https://img.shields.io/david/dev/fnalabs/test-automation.svg
-[devdepstat-url]: https://david-dm.org/fnalabs/test-automation?type=dev
 
 [style-image]: https://img.shields.io/badge/code_style-standard-brightgreen.svg
 [style-url]: https://standardjs.com
