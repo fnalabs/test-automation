@@ -1,6 +1,6 @@
 {
   "name": "test-automation",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "description": "Scaffolding on top of Protractor to follow a Page Object pattern for Automated browser tests.",
   "keywords": [
     "auto",
@@ -36,7 +36,7 @@
   "bugs": {
     "url": "https://github.com/fnalabs/test-automation/issues"
   },
-  "homepage": "https://github.com/fnalabs/test-automation#readme",
+  "homepage": "https://fnalabs.github.io/test-automation/",
   "author": "Adam Eilers",
   "license": "MIT",
   "engines": {
