@@ -141,6 +141,9 @@ Here is a simple example of an implementation using `test-automation`. When test
 - feature requests via [issues](https://github.com/fnalabs/test-automation/issues)
 
 ## Changelog
+#### v2.0.6
+- updated dependencies and scripts
+
 #### v2.0.5
 - fixed broken links in README
 
