@@ -24,7 +24,7 @@ The purpose of `test-automation` is to provide some scaffolding on top of [protr
 ## Installing
 Install using `npm`:
 ```sh
-$ npm install test-automation
+$ npm install --save mocha protractor test-automation
 ```
 
 ## Framework
