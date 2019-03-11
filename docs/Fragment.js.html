@@ -1,4 +1,45 @@
-/* global $ $$ */
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Fragment.js - Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <li class="nav-link nav-home-link"><a href="index.html">Home</a></li><li class="nav-heading">Classes</li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="Fragment.html">Fragment</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Fragment.html#elementClear">elementClear</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Fragment.html#elementClick">elementClick</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Fragment.html#elementSendKeys">elementSendKeys</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Fragment.html#elementSubmit">elementSubmit</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Fragment.html#getElement">getElement</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Fragment.html#setElement">setElement</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Fragment.html#testAttribute">testAttribute</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Fragment.html#testElements">testElements</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Fragment.html#testExists">testExists</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Fragment.html#testState">testState</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Fragment.html#testText">testText</a></span></li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="Sequence.html">Sequence</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Sequence.html#getFragment">getFragment</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Sequence.html#getUrl">getUrl</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Sequence.html#runSequence">runSequence</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Sequence.html#setFragment">setFragment</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Sequence.html#setStep">setStep</a></span></li>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">Fragment.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/* global $ $$ */
 // imports
 import chai from 'chai'
 import chaiAsPromised from 'chai-as-promised'
@@ -16,8 +57,8 @@ const FRAGMENTS = Symbol('Fragments shared within current composition')
 
 /**
  * Class representing a group of related HTML elements to test and perform actions against.
- * @param {Array<Fragment>} [fragments] - Optionally nested fragments that can be grouped hierarchically.
- * @example <caption>An example Fragment <a href="https://www.npmjs.com/package/test-automation#example">class</a> from the README. This Fragment sets an associated HTML element when instantiated and performs the default tests to ensure the image is on the page. It is used in the example Sequence below.</caption>
+ * @param {Array&lt;Fragment>} [fragments] - Optionally nested fragments that can be grouped hierarchically.
+ * @example &lt;caption>An example Fragment &lt;a href="https://www.npmjs.com/package/test-automation#example">class&lt;/a> from the README. This Fragment sets an associated HTML element when instantiated and performs the default tests to ensure the image is on the page. It is used in the example Sequence below.&lt;/caption>
  * import { IMG_SELECTOR } from '../constants'
  * import { Fragment } from 'test-automation'
  *
@@ -27,7 +68,7 @@ const FRAGMENTS = Symbol('Fragments shared within current composition')
  *     this.setElement(IMG_SELECTOR)
  *   }
  * }
- * @example <caption>A slightly more complex example Fragment <a href="https://github.com/fnalabs/test-automation-starter/blob/master/src/fragments/PageFragment.js">class</a> from the <a href="https://github.com/fnalabs/test-automation-starter">starter kit</a>. This Fragment is responsible for the Google search form. It overrides the `testElements` method to perform the default tests and also perform each of the remaining tests: `testText`, `testAttribute`, and `testState`.</caption>
+ * @example &lt;caption>A slightly more complex example Fragment &lt;a href="https://github.com/fnalabs/test-automation-starter/blob/master/src/fragments/PageFragment.js">class&lt;/a> from the &lt;a href="https://github.com/fnalabs/test-automation-starter">starter kit&lt;/a>. This Fragment is responsible for the Google search form. It overrides the `testElements` method to perform the default tests and also perform each of the remaining tests: `testText`, `testAttribute`, and `testState`.&lt;/caption>
  * import { TERMS_SELECTOR, FORM_SELECTOR, INPUT_SELECTOR } from '../constants'
  * import { Fragment } from 'test-automation'
  *
@@ -55,7 +96,7 @@ class Fragment {
 
     this[ELEMENTS] = new Map()
 
-    this[FRAGMENTS] = fragments && Array.isArray(fragments) ? fragments : null
+    this[FRAGMENTS] = fragments &amp;&amp; Array.isArray(fragments) ? fragments : null
   }
 
   /**
@@ -120,13 +161,13 @@ class Fragment {
   /**
    * [`async`] Test method that tests the state of an associated HTML element.
    * @param {string} selector - The CSS selector associated with the desired HTML element to test.
-   * @param {string|Array<string>} state - The desired states you wish to test. Currently, the supported states are: `displayed`, `enabled`, and `selected`.
+   * @param {string|Array&lt;string>} state - The desired states you wish to test. Currently, the supported states are: `displayed`, `enabled`, and `selected`.
    * @returns {Promise} The results of the test state assertion(s).
    */
   async testState (selector, state) {
     if (!state || !state.length) throw new TypeError('testState(selector, state): state must be a populated String|Array')
 
-    if (typeof state === 'string' && STATE_HASH[state]) {
+    if (typeof state === 'string' &amp;&amp; STATE_HASH[state]) {
       return this.expect(this.getElement(selector)[STATE_HASH[state]]()).to.eventually.be.true()
     }
     return Promise.all(state.map(value => this.testState(selector, value)))
@@ -167,7 +208,7 @@ class Fragment {
   /**
    * [`async`] Action method used to simulate keyboard user input on an associated HTML element.
    * @param {string} selector - The CSS selector associated with the desired HTML element to test.
-   * @param {string|Array<string>} keys - The <a href="https://www.protractortest.org/#/api?view=webdriver.WebElement.prototype.sendKeys">keys</a> you wish to simulate.
+   * @param {string|Array&lt;string>} keys - The &lt;a href="https://www.protractortest.org/#/api?view=webdriver.WebElement.prototype.sendKeys">keys&lt;/a> you wish to simulate.
    * @returns {Promise} The results of the `sendKeys` method on the element.
    */
   async elementSendKeys (selector, keys) {
@@ -188,3 +229,22 @@ class Fragment {
 }
 
 export default Fragment
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Sun Mar 10 2019 18:50:32 GMT-0500 (Central Daylight Time) using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>

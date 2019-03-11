@@ -52,7 +52,7 @@ const STEPS = Symbol('Steps to perform in the order they are defined')
  *   }
  * }
  */
-export default class Sequence {
+class Sequence {
   constructor () {
     this[SEQUENCE_FRAGMENTS] = new Map()
     this[STEPS] = []
@@ -108,3 +108,5 @@ export default class Sequence {
     return this[STEPS].reduce((promise, step) => promise.then(step), Promise.resolve())
   }
 }
+
+export default Sequence
