@@ -9,9 +9,6 @@
 
 The purpose of `test-automation` is to provide some scaffolding on top of [protractor](http://www.protractortest.org/) to follow a Page Object pattern for Automated browser tests. The framework contains some classes to help structure and automate your tests. This is developed in parallel with the [test-automation-starter](https://github.com/fnalabs/test-automation-starter) kit as the framework the Docker implementation is built upon. The starter kit has more of a complete example than what is provided below. The intent of the project is to provide the necessary tools and a starting point to rapidly develop automated browser tests.
 
-## What's new?
-[Documentation](https://fnalabs.github.io/test-automation/)!
-
 #### Contents
 - [Installing](#installing)
 - [Framework](#framework)
@@ -27,16 +24,16 @@ The purpose of `test-automation` is to provide some scaffolding on top of [protr
 ## Installing
 Install using `npm`:
 ```sh
-$ npm install test-automation
+$ npm install --save mocha protractor test-automation
 ```
 
 ## Framework
-The framework consists of two main classes: [Fragment](./src/Fragment.js) and [Sequence](./src/Sequence.js).
+The framework consists of two main classes: [Fragment](https://github.com/fnalabs/test-automation/blob/master/src/Fragment.js) and [Sequence](https://github.com/fnalabs/test-automation/blob/master/src/Sequence.js).
 
 ### Fragment
 A Fragment is the Page Object, a reusable group of HTML element references that can be tested. For instance, a top level navigation bar is a reusable group of HTML elements that could show up on many pages. It can be used as a shared Fragment component that can be associated with other Fragments. If you have unique content on the home page, you can make a home page Fragment that is associated with your navigation Fragment above. The purpose of a Fragment is for testing its elements and optionally performing actions against its elements.
 
-Fragment provides basic testing functionality for getting/setting elements stored in a Map. It also provides some basic test methods to test any child fragments as well as check if the elements exist on the page. To perform more complex tests, extend the functionality of the class with additional test methods as needed. Don't forget to override [testElements](./src/Fragment.js#L87-L96) to call your new methods after calling `await super.testElements()` to run the provided test methods.
+Fragment provides basic testing functionality for getting/setting elements stored in a Map. It also provides some basic test methods to test any child fragments as well as check if the elements exist on the page. To perform more complex tests, extend the functionality of the class with additional test methods as needed. Don't forget to override [testElements](https://github.com/fnalabs/test-automation/blob/master/src/Fragment.js#L87-L96) to call your new methods after calling `await super.testElements()` to run the provided test methods.
 - ***NOTE:*** Elements must be defined on a Fragment object before any tests can occur.
 - ***NOTE:*** Any additional action methods/classes will need to be added per use case, [requests](https://github.com/fnalabs/test-automation/issues) for common Actions are welcome. ([element api](http://www.protractortest.org/#/api?view=ElementFinder), [element.all api](http://www.protractortest.org/#/api?view=ElementArrayFinder))
 
@@ -138,12 +135,18 @@ Here is a simple example of an implementation using `test-automation`. When test
     specs: ['../dist/**/*spec.js']
   }
   ```
-  - ***NOTE:*** This configuration was used to run protractor on Linux Mint 18.1.
+  - ***NOTE:*** This configuration was used to run protractor on Ubuntu 18.04 LTS.
 
 ## Future
 - feature requests via [issues](https://github.com/fnalabs/test-automation/issues)
 
 ## Changelog
+#### v2.0.7
+- updated dependencies and documentation
+
+#### v2.0.6
+- updated dependencies and scripts
+
 #### v2.0.5
 - fixed broken links in README
 

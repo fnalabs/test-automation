@@ -1,1570 +1,216 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset='utf-8' />
-  <title>test-automation 2.0.6 | Documentation</title>
-  <meta name='viewport' content='width=device-width,initial-scale=1'>
-  <link href='assets/bass.css' type='text/css' rel='stylesheet' />
-  <link href='assets/style.css' type='text/css' rel='stylesheet' />
-  <link href='assets/github.css' type='text/css' rel='stylesheet' />
-  <link href='assets/split.css' type='text/css' rel='stylesheet' />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Home - Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
 </head>
-<body class='documentation m0'>
-    <div class='flex'>
-      <div id='split-left' class='overflow-auto fs0 height-viewport-100'>
-        <div class='py1 px2'>
-          <h3 class='mb0 no-anchor'>test-automation</h3>
-          <div class='mb1'><code>2.0.6</code></div>
-          <input
-            placeholder='Filter'
-            id='filter-input'
-            class='col12 block input'
-            type='text' />
-          <div id='toc'>
-            <ul class='list-reset h5 py1-ul'>
-              
-                
-                <li><a
-                  href='#overview'
-                  class="h5 bold black caps">
-                  Overview
-                  
-                </a>
-                
-                </li>
-              
-                
-                <li><a
-                  href='#installing'
-                  class="h5 bold black caps">
-                  Installing
-                  
-                </a>
-                
-                </li>
-              
-                
-                <li><a
-                  href='#fragment'
-                  class=" toggle-sibling">
-                  Fragment
-                  <span class='icon'>▸</span>
-                </a>
-                
-                <div class='toggle-target display-none'>
-                  
-                  
-                    <ul class='list-reset py1-ul pl1'>
-                      <li class='h5'><span>Instance members</span></li>
-                      
-                      <li><a
-                        href='#fragmentgetelement'
-                        class='regular pre-open'>
-                        #getElement
-                      </a></li>
-                      
-                      <li><a
-                        href='#fragmentsetelement'
-                        class='regular pre-open'>
-                        #setElement
-                      </a></li>
-                      
-                      <li><a
-                        href='#fragmenttestelements'
-                        class='regular pre-open'>
-                        #testElements
-                      </a></li>
-                      
-                      <li><a
-                        href='#fragmenttestexists'
-                        class='regular pre-open'>
-                        #testExists
-                      </a></li>
-                      
-                      <li><a
-                        href='#fragmenttesttext'
-                        class='regular pre-open'>
-                        #testText
-                      </a></li>
-                      
-                      <li><a
-                        href='#fragmentteststate'
-                        class='regular pre-open'>
-                        #testState
-                      </a></li>
-                      
-                      <li><a
-                        href='#fragmenttestattribute'
-                        class='regular pre-open'>
-                        #testAttribute
-                      </a></li>
-                      
-                      <li><a
-                        href='#fragmentelementclear'
-                        class='regular pre-open'>
-                        #elementClear
-                      </a></li>
-                      
-                      <li><a
-                        href='#fragmentelementclick'
-                        class='regular pre-open'>
-                        #elementClick
-                      </a></li>
-                      
-                      <li><a
-                        href='#fragmentelementsendkeys'
-                        class='regular pre-open'>
-                        #elementSendKeys
-                      </a></li>
-                      
-                      <li><a
-                        href='#fragmentelementsubmit'
-                        class='regular pre-open'>
-                        #elementSubmit
-                      </a></li>
-                      
-                    </ul>
-                  
-                  
-                  
-                </div>
-                
-                </li>
-              
-                
-                <li><a
-                  href='#sequence'
-                  class=" toggle-sibling">
-                  Sequence
-                  <span class='icon'>▸</span>
-                </a>
-                
-                <div class='toggle-target display-none'>
-                  
-                  
-                    <ul class='list-reset py1-ul pl1'>
-                      <li class='h5'><span>Instance members</span></li>
-                      
-                      <li><a
-                        href='#sequencegetfragment'
-                        class='regular pre-open'>
-                        #getFragment
-                      </a></li>
-                      
-                      <li><a
-                        href='#sequencesetfragment'
-                        class='regular pre-open'>
-                        #setFragment
-                      </a></li>
-                      
-                      <li><a
-                        href='#sequencesetstep'
-                        class='regular pre-open'>
-                        #setStep
-                      </a></li>
-                      
-                      <li><a
-                        href='#sequencegeturl'
-                        class='regular pre-open'>
-                        #getUrl
-                      </a></li>
-                      
-                      <li><a
-                        href='#sequencerunsequence'
-                        class='regular pre-open'>
-                        #runSequence
-                      </a></li>
-                      
-                    </ul>
-                  
-                  
-                  
-                </div>
-                
-                </li>
-              
-            </ul>
-          </div>
-          <div class='mt1 h6 quiet'>
-            <a href='http://documentation.js.org/reading-documentation.html'>Need help reading this?</a>
-          </div>
-        </div>
-      </div>
-      <div id='split-right' class='relative overflow-auto height-viewport-100'>
-        
-          
-            <div class='keyline-top-not py2'><section class='py2 clearfix'>
+<body>
 
-  <h2 id='overview' class='mt0'>
-    Overview
-  </h2>
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
 
-  
-    <p><a href="https://www.npmjs.com/package/test-automation"><img src="https://img.shields.io/npm/v/test-automation.svg" alt="NPM Version"></a>
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <li class="nav-link nav-home-link"><a href="index.html">Home</a></li><li class="nav-heading">Classes</li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="Fragment.html">Fragment</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Fragment.html#elementClear">elementClear</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Fragment.html#elementClick">elementClick</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Fragment.html#elementSendKeys">elementSendKeys</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Fragment.html#elementSubmit">elementSubmit</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Fragment.html#getElement">getElement</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Fragment.html#setElement">setElement</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Fragment.html#testAttribute">testAttribute</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Fragment.html#testElements">testElements</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Fragment.html#testExists">testExists</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Fragment.html#testState">testState</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Fragment.html#testText">testText</a></span></li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="Sequence.html">Sequence</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Sequence.html#getFragment">getFragment</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Sequence.html#getUrl">getUrl</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Sequence.html#runSequence">runSequence</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Sequence.html#setFragment">setFragment</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Sequence.html#setStep">setStep</a></span></li>
+</nav>
+
+<div id="main">
+    
+
+    
+
+
+
+    
+
+
+
+
+
+
+
+
+
+    
+
+
+    <section class="readme">
+        <article><h1>test-automation</h1><p><a href="https://www.npmjs.com/package/test-automation"><img src="https://img.shields.io/npm/v/test-automation.svg" alt="NPM Version"></a>
 <a href="https://github.com/fnalabs/test-automation/blob/master/LICENSE"><img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="License"></a>
 <a href="https://circleci.com/gh/fnalabs/test-automation"><img src="https://img.shields.io/circleci/project/github/fnalabs/test-automation.svg" alt="Build Status"></a>
 <a href="https://codecov.io/gh/fnalabs/test-automation"><img src="https://img.shields.io/codecov/c/github/fnalabs/test-automation/master.svg" alt="Code Coverage"></a>
 <a href="https://david-dm.org/fnalabs/test-automation"><img src="https://img.shields.io/david/fnalabs/test-automation.svg" alt="Dependency Status"></a>
 <a href="https://standardjs.com"><img src="https://img.shields.io/badge/code_style-standard-brightgreen.svg" alt="JavaScript Style Guide"></a></p>
 <p>The purpose of <code>test-automation</code> is to provide some scaffolding on top of <a href="http://www.protractortest.org/">protractor</a> to follow a Page Object pattern for Automated browser tests. The framework contains some classes to help structure and automate your tests. This is developed in parallel with the <a href="https://github.com/fnalabs/test-automation-starter">test-automation-starter</a> kit as the framework the Docker implementation is built upon. The starter kit has more of a complete example than what is provided below. The intent of the project is to provide the necessary tools and a starting point to rapidly develop automated browser tests.</p>
+<h4>Contents</h4><ul>
+<li><a href="#installing">Installing</a></li>
+<li><a href="#framework">Framework</a><ul>
+<li><a href="#fragment">Fragment</a></li>
+<li><a href="#sequence">Sequence</a></li>
+<li><a href="#api">API</a></li>
+</ul>
+</li>
+<li><a href="#example">Example</a><ul>
+<li><a href="#code">Code</a></li>
+<li><a href="#config">Config</a></li>
+</ul>
+</li>
+<li><a href="#future">Future</a></li>
+<li><a href="#changelog">Changelog</a></li>
+</ul>
+<h2>Installing</h2><p>Install using <code>npm</code>:</p>
+<pre class="prettyprint source lang-sh"><code>$ npm install --save mocha protractor test-automation</code></pre><h2>Framework</h2><p>The framework consists of two main classes: <a href="https://github.com/fnalabs/test-automation/blob/master/src/Fragment.js">Fragment</a> and <a href="https://github.com/fnalabs/test-automation/blob/master/src/Sequence.js">Sequence</a>.</p>
+<h3>Fragment</h3><p>A Fragment is the Page Object, a reusable group of HTML element references that can be tested. For instance, a top level navigation bar is a reusable group of HTML elements that could show up on many pages. It can be used as a shared Fragment component that can be associated with other Fragments. If you have unique content on the home page, you can make a home page Fragment that is associated with your navigation Fragment above. The purpose of a Fragment is for testing its elements and optionally performing actions against its elements.</p>
+<p>Fragment provides basic testing functionality for getting/setting elements stored in a Map. It also provides some basic test methods to test any child fragments as well as check if the elements exist on the page. To perform more complex tests, extend the functionality of the class with additional test methods as needed. Don't forget to override <a href="https://github.com/fnalabs/test-automation/blob/master/src/Fragment.js#L87-L96">testElements</a> to call your new methods after calling <code>await super.testElements()</code> to run the provided test methods.</p>
+<ul>
+<li><strong><em>NOTE:</em></strong> Elements must be defined on a Fragment object before any tests can occur.</li>
+<li><strong><em>NOTE:</em></strong> Any additional action methods/classes will need to be added per use case, <a href="https://github.com/fnalabs/test-automation/issues">requests</a> for common Actions are welcome. (<a href="http://www.protractortest.org/#/api?view=ElementFinder">element api</a>, <a href="http://www.protractortest.org/#/api?view=ElementArrayFinder">element.all api</a>)</li>
+</ul>
+<h3>Sequence</h3><p>A Sequence defines the steps an automated browser test specification needs to perform. It is also responsible to setting the entry point to the test sequence. It provides a Fragment cache to reference for each step in the sequence that will need to be defined.</p>
+<p>I've started out with some basics and will be adding more over time (and open to <a href="https://github.com/fnalabs/test-automation/issues">feature requests</a>).</p>
+<h3><a href="https://fnalabs.github.io/test-automation/">API</a></h3><p>Click on the link in the header above to go to the API page.</p>
+<h2>Example</h2><p>Here is a simple example of an implementation using <code>test-automation</code>. When testing a larger site with many tests, you will want to consider some structure around your code. I've added a suggested minimal folder structure below. I have also created a <a href="https://github.com/fnalabs/test-automation-starter">starter kit</a> that contains a more advanced test than below with additional support scripts and environment/execution specifics.</p>
+<h4>Code</h4><ul>
+<li><p><code>./constants.js</code></p>
+<pre class="prettyprint source lang-javascript"><code>// Selectors
+export const IMG_SELECTOR = '#hplogo'
 
-  
-</section>
-</div>
-          
-        
-          
-            <div class='keyline-top-not py2'><section class='py2 clearfix'>
+// Fragments
+export const GOOGLE_FRAGMENT = Symbol('google fragment')</code></pre></li>
+<li><p><code>./fragments/GoogleFragment.js</code></p>
+<pre class="prettyprint source lang-javascript"><code>import { IMG_SELECTOR } from '../constants'
+import { Fragment } from 'test-automation'
 
-  <h2 id='installing' class='mt0'>
-    Installing
-  </h2>
+export default class GoogleFragment extends Fragment {
 
-  
-    <p>Install using <code>npm</code>:</p>
-<pre class='hljs'>$ npm install <span class="hljs-built_in">test</span>-automation</pre>
+  constructor(fragments) {
+    super(fragments)
 
-  
-</section>
-</div>
-          
-        
-          
-            <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-  <div class='clearfix'>
-    
-    <h3 class='fl m0' id='fragment'>
-      Fragment
-    </h3>
-    
-    
-  </div>
-  
-
-  <p>Class representing a group of related HTML elements to test and perform actions against.</p>
-
-
-  <div class='pre p1 fill-light mt0'>new Fragment(fragments: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;<a href="#fragment">Fragment</a>>?)</div>
-  
-  
-
-  
-  
-  
-  
-  
-  
-
-  
-    <div class='py1 quiet mt1 prose-big'>Parameters</div>
-    <div class='prose'>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>fragments</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;<a href="#fragment">Fragment</a>>?)</code>
-	    Optionally nested fragments that can be grouped hierarchically.
-
-          </div>
-          
-        </div>
-      
-    </div>
-  
-
-  
-
-  
-
-  
-
-  
-    <div class='py1 quiet mt1 prose-big'>Example</div>
-    
-      <p><p>An example Fragment <a href="https://www.npmjs.com/package/test-automation#example">class</a> from the README. This Fragment sets an associated HTML element when instantiated and performs the default tests to ensure the image is on the page. It is used in the example Sequence below.</p>
-</p>
-      <pre class='p1 overflow-auto round fill-light'><span class="hljs-keyword">import</span> { IMG_SELECTOR } <span class="hljs-keyword">from</span> <span class="hljs-string">'../constants'</span>
-<span class="hljs-keyword">import</span> { Fragment } <span class="hljs-keyword">from</span> <span class="hljs-string">'test-automation'</span>
-
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">GoogleFragment</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Fragment</span> </span>{
-  <span class="hljs-keyword">constructor</span>(fragments) {
-    <span class="hljs-keyword">super</span>(fragments)
-    <span class="hljs-keyword">this</span>.setElement(IMG_SELECTOR)
-  }
-}</pre>
-    
-      <p><p>A slightly more complex example Fragment <a href="https://github.com/fnalabs/test-automation-starter/blob/master/src/fragments/PageFragment.js">class</a> from the <a href="https://github.com/fnalabs/test-automation-starter">starter kit</a>. This Fragment is responsible for the Google search form. It overrides the <code>testElements</code> method to perform the default tests and also perform each of the remaining tests: <code>testText</code>, <code>testAttribute</code>, and <code>testState</code>.</p>
-</p>
-      <pre class='p1 overflow-auto round fill-light'><span class="hljs-keyword">import</span> { TERMS_SELECTOR, FORM_SELECTOR, INPUT_SELECTOR } <span class="hljs-keyword">from</span> <span class="hljs-string">'../constants'</span>
-<span class="hljs-keyword">import</span> { Fragment } <span class="hljs-keyword">from</span> <span class="hljs-string">'test-automation'</span>
-
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">PageFragment</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Fragment</span> </span>{
-  <span class="hljs-keyword">constructor</span> (fragments) {
-    <span class="hljs-keyword">super</span>(fragments)
-
-    <span class="hljs-keyword">this</span>.setElement(TERMS_SELECTOR)
-    <span class="hljs-keyword">this</span>.setElement(FORM_SELECTOR)
-    <span class="hljs-keyword">this</span>.setElement(INPUT_SELECTOR)
+    this.setElement(IMG_SELECTOR)
   }
 
-  <span class="hljs-keyword">async</span> testElements () {
-    <span class="hljs-keyword">await</span> <span class="hljs-keyword">super</span>.testElements()
+}</code></pre></li>
+<li><p><code>./sequences/GoogleSequence.js</code></p>
+<pre class="prettyprint source lang-javascript"><code>import { GOOGLE_FRAGMENT } from '../constants'
+import { Sequence } from 'test-automation'
+import GoogleFragment from '../fragments/GoogleFragment'
 
-    <span class="hljs-keyword">await</span> <span class="hljs-keyword">this</span>.testText(TERMS_SELECTOR, <span class="hljs-string">'Terms'</span>)
-    <span class="hljs-keyword">await</span> <span class="hljs-keyword">this</span>.testAttribute(INPUT_SELECTOR, <span class="hljs-string">'type'</span>, <span class="hljs-string">'text'</span>)
-    <span class="hljs-keyword">await</span> <span class="hljs-keyword">this</span>.testState(INPUT_SELECTOR, [<span class="hljs-string">'displayed'</span>, <span class="hljs-string">'enabled'</span>])
+export default class GoogleSequence extends Sequence {
+
+  constructor() {
+    super()
+
+    this.setFragment(GOOGLE_FRAGMENT, new GoogleFragment())
+
+    this.setStep(() => this.getUrl('/'))
+    this.setStep(this.getFragment(GOOGLE_FRAGMENT).testElements)
   }
-}</pre>
-    
-  
 
-  
+}</code></pre></li>
+<li><p><code>./specs/google.spec.js</code></p>
+<pre class="prettyprint source lang-javascript"><code>import GoogleSequence from '../sequences/GoogleSequence'
+browser.ignoreSynchronization = true
+
+describe('google homepage img test', () => {
+  let googleSequence
+
+  before(() => {
+    googleSequence = new GoogleSequence()
+  })
+
+  it('expects img to exist on the google homepage', async () => {
+    await googleSequence.runSequence()
+  })
+
+  after(() => {
+    googleSequence = null
+  })
+})</code></pre></li>
+</ul>
+<h4>Config</h4><ul>
+<li><code>./conf/config.js</code><pre class="prettyprint source lang-javascript"><code>exports.config = {
+  directConnect: true,
+  capabilities: {
+    browserName: 'chrome',
+    platform: 'ANY',
+    version: ''
+  },
+  baseUrl: 'https://www.google.com',
+  framework: 'mocha',
+  mochaOpts: {
+    reporter: 'spec',
+    timeout: 5000
+  },
+  specs: ['../dist/**/*spec.js']
+}</code></pre><ul>
+<li><strong><em>NOTE:</em></strong> This configuration was used to run protractor on Ubuntu 18.04 LTS.</li>
+</ul>
+</li>
+</ul>
+<h2>Future</h2><ul>
+<li>feature requests via <a href="https://github.com/fnalabs/test-automation/issues">issues</a></li>
+</ul>
+<h2>Changelog</h2><h4>v2.0.7</h4><ul>
+<li>updated dependencies and documentation</li>
+</ul>
+<h4>v2.0.6</h4><ul>
+<li>updated dependencies and scripts</li>
+</ul>
+<h4>v2.0.5</h4><ul>
+<li>fixed broken links in README</li>
+</ul>
+<h4>v2.0.4</h4><ul>
+<li>updated homepage link in <code>package.json</code></li>
+</ul>
+<h4>v2.0.3</h4><ul>
+<li>added documentation</li>
+</ul>
+<h4>v2.0.2</h4><ul>
+<li>updated name, license, and organization</li>
+<li>updated dependencies</li>
+</ul>
+<h4>v2.0.1</h4><ul>
+<li>updated dependencies and configurations</li>
+</ul>
+<h4>v2.0.0</h4><ul>
+<li>added test methods on Fragment for common tests (<a href="#async-testtext-selector-text">testText</a>, <a href="#async-teststate-selector-state">testState</a>, <a href="#async-testattribute-selector-attribute-text">testAttribute</a>)</li>
+<li>added action methods on Fragment for common actions (<a href="#async-elementclear-selector">elementClear</a>, <a href="#async-elementclick-selector">elementClick</a>, <a href="#async-elementsendkeys-selector-keys">elementSendKeys</a>, and <a href="#async-elementsubmit-selector">elementSubmit</a>)</li>
+<li>updated Babel config to support native ES2017+ features</li>
+<li>updated dependencies</li>
+<li>removed Gulp</li>
+</ul>
+<h4>v1.0.0</h4><ul>
+<li>initial release</li>
+</ul></article>
+    </section>
 
-  
-    <div class='py1 quiet mt1 prose-big'>Instance Members</div>
-    <div class="clearfix">
-  
-    <div class='border-bottom' id='fragmentgetelement'>
-      <div class="clearfix small pointer toggle-sibling">
-        <div class="py1 contain">
-            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>getElement(selector)</span>
-        </div>
-      </div>
-      <div class="clearfix display-none toggle-target">
-        <section class='p2 mb2 clearfix bg-white minishadow'>
 
-  
 
-  <p>Gets the HTML element(s) referenced by the selector passed.</p>
 
 
-  <div class='pre p1 fill-light mt0'>getElement(selector: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></div>
-  
-  
 
-  
-  
-  
-  
-  
-  
-
-  
-    <div class='py1 quiet mt1 prose-big'>Parameters</div>
-    <div class='prose'>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>selector</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
-	    The CSS selector associated with the HTML element(s).
-
-          </div>
-          
-        </div>
-      
-    </div>
-  
-
-  
-
-  
-    
-      <div class='py1 quiet mt1 prose-big'>Returns</div>
-      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></code>:
-        The associated HTML element(s).
-
-      
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-</section>
-
-      </div>
-    </div>
-  
-    <div class='border-bottom' id='fragmentsetelement'>
-      <div class="clearfix small pointer toggle-sibling">
-        <div class="py1 contain">
-            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>setElement(selector, all)</span>
-        </div>
-      </div>
-      <div class="clearfix display-none toggle-target">
-        <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-
-  <p>Sets the HTML element(s) referenced by the selector passed.</p>
-
-
-  <div class='pre p1 fill-light mt0'>setElement(selector: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>, all: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></div>
-  
-  
-
-  
-  
-  
-  
-  
-  
-
-  
-    <div class='py1 quiet mt1 prose-big'>Parameters</div>
-    <div class='prose'>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>selector</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
-	    The CSS selector associated with the HTML element(s).
-
-          </div>
-          
-        </div>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>all</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a>
-            = <code>false</code>)</code>
-	    The optional parameter to specify whether to select all matching HTML elements.
-
-          </div>
-          
-        </div>
-      
-    </div>
-  
-
-  
-
-  
-    
-      <div class='py1 quiet mt1 prose-big'>Returns</div>
-      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></code>:
-        The associated HTML element(s).
-
-      
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-</section>
-
-      </div>
-    </div>
-  
-    <div class='border-bottom' id='fragmenttestelements'>
-      <div class="clearfix small pointer toggle-sibling">
-        <div class="py1 contain">
-            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>testElements()</span>
-        </div>
-      </div>
-      <div class="clearfix display-none toggle-target">
-        <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-
-  <p>[<code>async</code>] Test method that provides the minimal test pass capabilities, which are calling <code>testElements</code> on all of its associated Fragments and checking if all of its associated HTML elements exist. This should be overridden by classes extending Fragment to define the desired tests on your Fragment.</p>
-
-
-  <div class='pre p1 fill-light mt0'>testElements(): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></div>
-  
-  
-
-  
-  
-  
-  
-  
-  
-
-  
-
-  
-
-  
-    
-      <div class='py1 quiet mt1 prose-big'>Returns</div>
-      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></code>:
-        The results of the 
-<code>testExists</code>
- method.
-
-      
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-</section>
-
-      </div>
-    </div>
-  
-    <div class='border-bottom' id='fragmenttestexists'>
-      <div class="clearfix small pointer toggle-sibling">
-        <div class="py1 contain">
-            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>testExists()</span>
-        </div>
-      </div>
-      <div class="clearfix display-none toggle-target">
-        <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-
-  <p>[<code>async</code>] Test method that checks for the existence of all the HTML elements associated with the Fragment.</p>
-
-
-  <div class='pre p1 fill-light mt0'>testExists(): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></div>
-  
-  
-
-  
-  
-  
-  
-  
-  
-
-  
-
-  
-
-  
-    
-      <div class='py1 quiet mt1 prose-big'>Returns</div>
-      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></code>:
-        The results of all the 
-<code>isPresent</code>
- assertions on HTML elements.
-
-      
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-</section>
-
-      </div>
-    </div>
-  
-    <div class='border-bottom' id='fragmenttesttext'>
-      <div class="clearfix small pointer toggle-sibling">
-        <div class="py1 contain">
-            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>testText(selector, text)</span>
-        </div>
-      </div>
-      <div class="clearfix display-none toggle-target">
-        <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-
-  <p>[<code>async</code>] Test method that tests the text value of an associated HTML element.</p>
-
-
-  <div class='pre p1 fill-light mt0'>testText(selector: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>, text: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></div>
-  
-  
-
-  
-  
-  
-  
-  
-  
-
-  
-    <div class='py1 quiet mt1 prose-big'>Parameters</div>
-    <div class='prose'>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>selector</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
-	    The CSS selector associated with the desired HTML element to test.
-
-          </div>
-          
-        </div>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>text</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
-	    The text to test the HTML element's content against.
-
-          </div>
-          
-        </div>
-      
-    </div>
-  
-
-  
-
-  
-    
-      <div class='py1 quiet mt1 prose-big'>Returns</div>
-      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></code>:
-        The results of the test text assertion.
-
-      
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-</section>
-
-      </div>
-    </div>
-  
-    <div class='border-bottom' id='fragmentteststate'>
-      <div class="clearfix small pointer toggle-sibling">
-        <div class="py1 contain">
-            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>testState(selector, state)</span>
-        </div>
-      </div>
-      <div class="clearfix display-none toggle-target">
-        <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-
-  <p>[<code>async</code>] Test method that tests the state of an associated HTML element.</p>
-
-
-  <div class='pre p1 fill-light mt0'>testState(selector: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>, state: (<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a> | <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>>)): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></div>
-  
-  
-
-  
-  
-  
-  
-  
-  
-
-  
-    <div class='py1 quiet mt1 prose-big'>Parameters</div>
-    <div class='prose'>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>selector</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
-	    The CSS selector associated with the desired HTML element to test.
-
-          </div>
-          
-        </div>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>state</span> <code class='quiet'>((<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a> | <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>>))</code>
-	    The desired states you wish to test. Currently, the supported states are: 
-<code>displayed</code>
-, 
-<code>enabled</code>
-, and 
-<code>selected</code>
-.
-
-          </div>
-          
-        </div>
-      
-    </div>
-  
-
-  
-
-  
-    
-      <div class='py1 quiet mt1 prose-big'>Returns</div>
-      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></code>:
-        The results of the test state assertion(s).
-
-      
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-</section>
-
-      </div>
-    </div>
-  
-    <div class='border-bottom' id='fragmenttestattribute'>
-      <div class="clearfix small pointer toggle-sibling">
-        <div class="py1 contain">
-            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>testAttribute(selector, attribute, text)</span>
-        </div>
-      </div>
-      <div class="clearfix display-none toggle-target">
-        <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-
-  <p>[<code>async</code>] Test method that tests the desired attribute of an associated HTML element.</p>
-
-
-  <div class='pre p1 fill-light mt0'>testAttribute(selector: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>, attribute: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>, text: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></div>
-  
-  
-
-  
-  
-  
-  
-  
-  
-
-  
-    <div class='py1 quiet mt1 prose-big'>Parameters</div>
-    <div class='prose'>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>selector</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
-	    The CSS selector associated with the desired HTML element to test.
-
-          </div>
-          
-        </div>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>attribute</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
-	    The desired HTML attribute you want to test.
-
-          </div>
-          
-        </div>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>text</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
-	    The expected text to test against the HTML attribute.
-
-          </div>
-          
-        </div>
-      
-    </div>
-  
-
-  
-
-  
-    
-      <div class='py1 quiet mt1 prose-big'>Returns</div>
-      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></code>:
-        The results of the test attribute assertion.
-
-      
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-</section>
-
-      </div>
-    </div>
-  
-    <div class='border-bottom' id='fragmentelementclear'>
-      <div class="clearfix small pointer toggle-sibling">
-        <div class="py1 contain">
-            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>elementClear(selector)</span>
-        </div>
-      </div>
-      <div class="clearfix display-none toggle-target">
-        <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-
-  <p>[<code>async</code>] Action method used to clear the any value set on an associated HTML element.</p>
-
-
-  <div class='pre p1 fill-light mt0'>elementClear(selector: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></div>
-  
-  
-
-  
-  
-  
-  
-  
-  
-
-  
-    <div class='py1 quiet mt1 prose-big'>Parameters</div>
-    <div class='prose'>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>selector</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
-	    The CSS selector associated with the desired HTML element to test.
-
-          </div>
-          
-        </div>
-      
-    </div>
-  
-
-  
-
-  
-    
-      <div class='py1 quiet mt1 prose-big'>Returns</div>
-      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></code>:
-        The results of the 
-<code>clear</code>
- method on the element.
-
-      
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-</section>
-
-      </div>
-    </div>
-  
-    <div class='border-bottom' id='fragmentelementclick'>
-      <div class="clearfix small pointer toggle-sibling">
-        <div class="py1 contain">
-            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>elementClick(selector)</span>
-        </div>
-      </div>
-      <div class="clearfix display-none toggle-target">
-        <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-
-  <p>[<code>async</code>] Action method used to simulate a click on an associated HTML element.</p>
-
-
-  <div class='pre p1 fill-light mt0'>elementClick(selector: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></div>
-  
-  
-
-  
-  
-  
-  
-  
-  
-
-  
-    <div class='py1 quiet mt1 prose-big'>Parameters</div>
-    <div class='prose'>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>selector</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
-	    The CSS selector associated with the desired HTML element to test.
-
-          </div>
-          
-        </div>
-      
-    </div>
-  
-
-  
-
-  
-    
-      <div class='py1 quiet mt1 prose-big'>Returns</div>
-      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></code>:
-        The results of the 
-<code>click</code>
- method on the element.
-
-      
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-</section>
-
-      </div>
-    </div>
-  
-    <div class='border-bottom' id='fragmentelementsendkeys'>
-      <div class="clearfix small pointer toggle-sibling">
-        <div class="py1 contain">
-            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>elementSendKeys(selector, keys)</span>
-        </div>
-      </div>
-      <div class="clearfix display-none toggle-target">
-        <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-
-  <p>[<code>async</code>] Action method used to simulate keyboard user input on an associated HTML element.</p>
-
-
-  <div class='pre p1 fill-light mt0'>elementSendKeys(selector: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>, keys: (<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a> | <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>>)): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></div>
-  
-  
-
-  
-  
-  
-  
-  
-  
-
-  
-    <div class='py1 quiet mt1 prose-big'>Parameters</div>
-    <div class='prose'>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>selector</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
-	    The CSS selector associated with the desired HTML element to test.
-
-          </div>
-          
-        </div>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>keys</span> <code class='quiet'>((<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a> | <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>>))</code>
-	    The 
-<a href="https://www.protractortest.org/#/api?view=webdriver.WebElement.prototype.sendKeys">
-keys
-</a>
- you wish to simulate.
-
-          </div>
-          
-        </div>
-      
-    </div>
-  
-
-  
-
-  
-    
-      <div class='py1 quiet mt1 prose-big'>Returns</div>
-      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></code>:
-        The results of the 
-<code>sendKeys</code>
- method on the element.
-
-      
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-</section>
-
-      </div>
-    </div>
-  
-    <div class='border-bottom' id='fragmentelementsubmit'>
-      <div class="clearfix small pointer toggle-sibling">
-        <div class="py1 contain">
-            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>elementSubmit(selector)</span>
-        </div>
-      </div>
-      <div class="clearfix display-none toggle-target">
-        <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-
-  <p>[<code>async</code>] Action method used to simulate submitting an associated HTML form.</p>
-
-
-  <div class='pre p1 fill-light mt0'>elementSubmit(selector: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></div>
-  
-  
-
-  
-  
-  
-  
-  
-  
-
-  
-    <div class='py1 quiet mt1 prose-big'>Parameters</div>
-    <div class='prose'>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>selector</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
-	    The CSS selector associated with the desired HTML element to test.
-
-          </div>
-          
-        </div>
-      
-    </div>
-  
-
-  
-
-  
-    
-      <div class='py1 quiet mt1 prose-big'>Returns</div>
-      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></code>:
-        The results of the 
-<code>submit</code>
- method on the element.
-
-      
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-</section>
-
-      </div>
-    </div>
-  
 </div>
 
-  
+<br class="clear">
 
-  
-</section>
+<footer>
+    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Thu Mar 14 2019 07:57:47 GMT-0500 (Central Daylight Time) using the Minami theme.
+</footer>
 
-          
-        
-          
-            <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-  <div class='clearfix'>
-    
-    <h3 class='fl m0' id='sequence'>
-      Sequence
-    </h3>
-    
-    
-  </div>
-  
-
-  <p>Class representing a sequence of tests and actions to perform.</p>
-
-
-  <div class='pre p1 fill-light mt0'>new Sequence()</div>
-  
-  
-
-  
-  
-  
-  
-  
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    <div class='py1 quiet mt1 prose-big'>Example</div>
-    
-      <p><p>An example Sequence <a href="https://www.npmjs.com/package/test-automation#example">class</a> from the README. This Sequence creates a Fragment and sets some basic steps to load the Google homepage and check if the image loads.</p>
-</p>
-      <pre class='p1 overflow-auto round fill-light'><span class="hljs-keyword">import</span> { GOOGLE_FRAGMENT } <span class="hljs-keyword">from</span> <span class="hljs-string">'../constants'</span>
-<span class="hljs-keyword">import</span> { Sequence } <span class="hljs-keyword">from</span> <span class="hljs-string">'test-automation'</span>
-<span class="hljs-keyword">import</span> GoogleFragment <span class="hljs-keyword">from</span> <span class="hljs-string">'../fragments/GoogleFragment'</span>
-
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">GoogleSequence</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Sequence</span> </span>{
-  <span class="hljs-keyword">constructor</span>() {
-    <span class="hljs-keyword">super</span>()
-
-    <span class="hljs-keyword">this</span>.setFragment(GOOGLE_FRAGMENT, <span class="hljs-keyword">new</span> GoogleFragment())
-
-    <span class="hljs-keyword">this</span>.setStep(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> <span class="hljs-keyword">this</span>.getUrl(<span class="hljs-string">'/'</span>))
-    <span class="hljs-keyword">this</span>.setStep(<span class="hljs-keyword">this</span>.getFragment(GOOGLE_FRAGMENT).testElements)
-  }
-}</pre>
-    
-      <p><p>A slightly more complex example Sequence <a href="https://github.com/fnalabs/test-automation-starter/blob/master/src/sequences/GoogleSequence.js">class</a> from the <a href="https://github.com/fnalabs/test-automation-starter">starter kit</a>. This Sequence creates multiple Fragments and sets many steps to fill out the Google search form, perform a search for <code>www.google.com</code>, land on the results page, and go back to the homepage.</p>
-</p>
-      <pre class='p1 overflow-auto round fill-light'><span class="hljs-keyword">import</span> { FORM_SELECTOR, INPUT_SELECTOR, LINK_SELECTOR, GOOGLE_FRAGMENT, RESULT_FRAGMENT } <span class="hljs-keyword">from</span> <span class="hljs-string">'../constants'</span>
-<span class="hljs-keyword">import</span> { Sequence } <span class="hljs-keyword">from</span> <span class="hljs-string">'test-automation'</span>
-
-<span class="hljs-keyword">import</span> GoogleFragment <span class="hljs-keyword">from</span> <span class="hljs-string">'../fragments/GoogleFragment'</span>
-<span class="hljs-keyword">import</span> PageFragment <span class="hljs-keyword">from</span> <span class="hljs-string">'../fragments/PageFragment'</span>
-<span class="hljs-keyword">import</span> ResultFragment <span class="hljs-keyword">from</span> <span class="hljs-string">'../fragments/ResultFragment'</span>
-
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">GoogleSequence</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Sequence</span> </span>{
-  <span class="hljs-keyword">constructor</span> () {
-    <span class="hljs-keyword">super</span>()
-
-    <span class="hljs-keyword">const</span> homepage = <span class="hljs-keyword">this</span>.setFragment(GOOGLE_FRAGMENT, <span class="hljs-keyword">new</span> PageFragment([<span class="hljs-keyword">new</span> GoogleFragment()]))
-    <span class="hljs-keyword">const</span> resultpage = <span class="hljs-keyword">this</span>.setFragment(RESULT_FRAGMENT, <span class="hljs-keyword">new</span> ResultFragment())
-
-    <span class="hljs-keyword">this</span>.setStep([
-      <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> <span class="hljs-keyword">this</span>.getUrl(<span class="hljs-string">'/'</span>),
-      () =&gt; homepage.testElements(),
-      () =&gt; homepage.elementSendKeys(INPUT_SELECTOR, <span class="hljs-string">'something'</span>),
-      () =&gt; homepage.elementClear(INPUT_SELECTOR),
-      () =&gt; homepage.elementSendKeys(INPUT_SELECTOR, <span class="hljs-string">'www.google.com'</span>),
-      () =&gt; homepage.elementSubmit(FORM_SELECTOR),
-      () =&gt; resultpage.testElements(),
-      () =&gt; resultpage.elementClick(LINK_SELECTOR),
-      () =&gt; homepage.testElements()
-    ])
-  }
-}</pre>
-    
-  
-
-  
-
-  
-    <div class='py1 quiet mt1 prose-big'>Instance Members</div>
-    <div class="clearfix">
-  
-    <div class='border-bottom' id='sequencegetfragment'>
-      <div class="clearfix small pointer toggle-sibling">
-        <div class="py1 contain">
-            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>getFragment(key)</span>
-        </div>
-      </div>
-      <div class="clearfix display-none toggle-target">
-        <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-
-  <p>Gets the Fragment referenced by the key passed.</p>
-
-
-  <div class='pre p1 fill-light mt0'>getFragment(key: (<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a> | <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Symbol">Symbol</a>)): <a href="#fragment">Fragment</a></div>
-  
-  
-
-  
-  
-  
-  
-  
-  
-
-  
-    <div class='py1 quiet mt1 prose-big'>Parameters</div>
-    <div class='prose'>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>key</span> <code class='quiet'>((<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a> | <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Symbol">Symbol</a>))</code>
-	    The unique key associated with the Fragment.
-
-          </div>
-          
-        </div>
-      
-    </div>
-  
-
-  
-
-  
-    
-      <div class='py1 quiet mt1 prose-big'>Returns</div>
-      <code><a href="#fragment">Fragment</a></code>:
-        The associated fragment.
-
-      
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-</section>
-
-      </div>
-    </div>
-  
-    <div class='border-bottom' id='sequencesetfragment'>
-      <div class="clearfix small pointer toggle-sibling">
-        <div class="py1 contain">
-            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>setFragment(key, fragment)</span>
-        </div>
-      </div>
-      <div class="clearfix display-none toggle-target">
-        <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-
-  <p>Sets the Fragment to be referenced by the key passed.</p>
-
-
-  <div class='pre p1 fill-light mt0'>setFragment(key: (<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a> | <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Symbol">Symbol</a>), fragment: <a href="#fragment">Fragment</a>): <a href="#fragment">Fragment</a></div>
-  
-  
-
-  
-  
-  
-  
-  
-  
-
-  
-    <div class='py1 quiet mt1 prose-big'>Parameters</div>
-    <div class='prose'>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>key</span> <code class='quiet'>((<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a> | <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Symbol">Symbol</a>))</code>
-	    The unique key associated with the Fragment.
-
-          </div>
-          
-        </div>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>fragment</span> <code class='quiet'>(<a href="#fragment">Fragment</a>)</code>
-	    The Fragment to associate with the key.
-
-          </div>
-          
-        </div>
-      
-    </div>
-  
-
-  
-
-  
-    
-      <div class='py1 quiet mt1 prose-big'>Returns</div>
-      <code><a href="#fragment">Fragment</a></code>:
-        The associated fragment.
-
-      
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-</section>
-
-      </div>
-    </div>
-  
-    <div class='border-bottom' id='sequencesetstep'>
-      <div class="clearfix small pointer toggle-sibling">
-        <div class="py1 contain">
-            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>setStep(step)</span>
-        </div>
-      </div>
-      <div class="clearfix display-none toggle-target">
-        <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-
-  <p>Sets a test step to be run, in order, during the test pass.</p>
-
-
-  <div class='pre p1 fill-light mt0'>setStep(step: (<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function">Function</a> | <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function">Function</a>>))</div>
-  
-  
-
-  
-  
-  
-  
-  
-  
-
-  
-    <div class='py1 quiet mt1 prose-big'>Parameters</div>
-    <div class='prose'>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>step</span> <code class='quiet'>((<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function">Function</a> | <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a>&#x3C;<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function">Function</a>>))</code>
-	    The function that wraps a test or action.
-
-          </div>
-          
-        </div>
-      
-    </div>
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-</section>
-
-      </div>
-    </div>
-  
-    <div class='border-bottom' id='sequencegeturl'>
-      <div class="clearfix small pointer toggle-sibling">
-        <div class="py1 contain">
-            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>getUrl(url)</span>
-        </div>
-      </div>
-      <div class="clearfix display-none toggle-target">
-        <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-
-  <p>[<code>async</code>] Getter method that gets the url specified to load in the browser.</p>
-
-
-  <div class='pre p1 fill-light mt0'>getUrl(url: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></div>
-  
-  
-
-  
-  
-  
-  
-  
-  
-
-  
-    <div class='py1 quiet mt1 prose-big'>Parameters</div>
-    <div class='prose'>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>url</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
-	    The relative url path to load.
-
-          </div>
-          
-        </div>
-      
-    </div>
-  
-
-  
-
-  
-    
-      <div class='py1 quiet mt1 prose-big'>Returns</div>
-      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></code>:
-        The promise representing the browser get call.
-
-      
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-</section>
-
-      </div>
-    </div>
-  
-    <div class='border-bottom' id='sequencerunsequence'>
-      <div class="clearfix small pointer toggle-sibling">
-        <div class="py1 contain">
-            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>runSequence()</span>
-        </div>
-      </div>
-      <div class="clearfix display-none toggle-target">
-        <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-
-  <p>[<code>async</code>] Method that runs the sequence of test steps previously specified.</p>
-
-
-  <div class='pre p1 fill-light mt0'>runSequence(): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></div>
-  
-  
-
-  
-  
-  
-  
-  
-  
-
-  
-
-  
-
-  
-    
-      <div class='py1 quiet mt1 prose-big'>Returns</div>
-      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></code>:
-        The promise chain of test steps.
-
-      
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-</section>
-
-      </div>
-    </div>
-  
-</div>
-
-  
-
-  
-</section>
-
-          
-        
-      </div>
-    </div>
-  <script src='assets/anchor.js'></script>
-  <script src='assets/split.js'></script>
-  <script src='assets/site.js'></script>
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
 </body>
 </html>

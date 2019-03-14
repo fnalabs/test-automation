@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Sequence.js - Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <li class="nav-link nav-home-link"><a href="index.html">Home</a></li><li class="nav-heading">Classes</li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="Fragment.html">Fragment</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Fragment.html#elementClear">elementClear</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Fragment.html#elementClick">elementClick</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Fragment.html#elementSendKeys">elementSendKeys</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Fragment.html#elementSubmit">elementSubmit</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Fragment.html#getElement">getElement</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Fragment.html#setElement">setElement</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Fragment.html#testAttribute">testAttribute</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Fragment.html#testElements">testElements</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Fragment.html#testExists">testExists</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Fragment.html#testState">testState</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Fragment.html#testText">testText</a></span></li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="Sequence.html">Sequence</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Sequence.html#getFragment">getFragment</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Sequence.html#getUrl">getUrl</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Sequence.html#runSequence">runSequence</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Sequence.html#setFragment">setFragment</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Sequence.html#setStep">setStep</a></span></li>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">Sequence.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/* global browser */
+// imports
+import Fragment from './Fragment'
+
+// private property keys
+const SEQUENCE_FRAGMENTS = Symbol('Fragments to reference for testing')
+const STEPS = Symbol('Steps to perform in the order they are defined')
+
+/**
+ * Class representing a sequence of tests and actions to perform.
+ * @example &lt;caption>An example Sequence &lt;a href="https://www.npmjs.com/package/test-automation#example">class&lt;/a> from the README. This Sequence creates a Fragment and sets some basic steps to load the Google homepage and check if the image loads.&lt;/caption>
+ * import { GOOGLE_FRAGMENT } from '../constants'
+ * import { Sequence } from 'test-automation'
+ * import GoogleFragment from '../fragments/GoogleFragment'
+ *
+ * export default class GoogleSequence extends Sequence {
+ *   constructor() {
+ *     super()
+ *
+ *     this.setFragment(GOOGLE_FRAGMENT, new GoogleFragment())
+ *
+ *     this.setStep(() => this.getUrl('/'))
+ *     this.setStep(this.getFragment(GOOGLE_FRAGMENT).testElements)
+ *   }
+ * }
+ * @example &lt;caption>A slightly more complex example Sequence &lt;a href="https://github.com/fnalabs/test-automation-starter/blob/master/src/sequences/GoogleSequence.js">class&lt;/a> from the &lt;a href="https://github.com/fnalabs/test-automation-starter">starter kit&lt;/a>. This Sequence creates multiple Fragments and sets many steps to fill out the Google search form, perform a search for `www.google.com`, land on the results page, and go back to the homepage.&lt;/caption>
+ * import { FORM_SELECTOR, INPUT_SELECTOR, LINK_SELECTOR, GOOGLE_FRAGMENT, RESULT_FRAGMENT } from '../constants'
+ * import { Sequence } from 'test-automation'
+ *
+ * import GoogleFragment from '../fragments/GoogleFragment'
+ * import PageFragment from '../fragments/PageFragment'
+ * import ResultFragment from '../fragments/ResultFragment'
+ *
+ * export default class GoogleSequence extends Sequence {
+ *   constructor () {
+ *     super()
+ *
+ *     const homepage = this.setFragment(GOOGLE_FRAGMENT, new PageFragment([new GoogleFragment()]))
+ *     const resultpage = this.setFragment(RESULT_FRAGMENT, new ResultFragment())
+ *
+ *     this.setStep([
+ *       () => this.getUrl('/'),
+ *       () => homepage.testElements(),
+ *       () => homepage.elementSendKeys(INPUT_SELECTOR, 'something'),
+ *       () => homepage.elementClear(INPUT_SELECTOR),
+ *       () => homepage.elementSendKeys(INPUT_SELECTOR, 'www.google.com'),
+ *       () => homepage.elementSubmit(FORM_SELECTOR),
+ *       () => resultpage.testElements(),
+ *       () => resultpage.elementClick(LINK_SELECTOR),
+ *       () => homepage.testElements()
+ *     ])
+ *   }
+ * }
+ */
+class Sequence {
+  constructor () {
+    this[SEQUENCE_FRAGMENTS] = new Map()
+    this[STEPS] = []
+  }
+
+  /**
+   * Gets the Fragment referenced by the key passed.
+   * @param {string|Symbol} key - The unique key associated with the Fragment.
+   * @returns {Fragment} The associated fragment.
+   */
+  getFragment (key) {
+    if (!key || !(/^string|symbol$/.test(typeof key))) throw new TypeError('getFragment(key): key must be a populated String|Symbol')
+    return this[SEQUENCE_FRAGMENTS].get(key)
+  }
+
+  /**
+   * Sets the Fragment to be referenced by the key passed.
+   * @param {string|Symbol} key - The unique key associated with the Fragment.
+   * @param {Fragment} fragment - The Fragment to associate with the key.
+   * @returns {Fragment} The associated fragment.
+   */
+  setFragment (key, fragment) {
+    if (!key || !(/^string|symbol$/.test(typeof key))) throw new TypeError('setFragment(key, fragment): key must be a populated String|Symbol')
+    if (!(fragment instanceof Fragment)) throw new TypeError('setFragment(key, fragment): fragment must be a Fragment')
+    this[SEQUENCE_FRAGMENTS].set(key, fragment)
+    return fragment
+  }
+
+  /**
+   * Sets a test step to be run, in order, during the test pass.
+   * @param {Function|Array&lt;Function>} step - The function that wraps a test or action.
+   */
+  setStep (step) {
+    if (typeof step !== 'function' &amp;&amp; !Array.isArray(step)) throw new TypeError('step must be a Function|Array')
+    Array.isArray(step) ? this[STEPS].push(...step) : this[STEPS].push(step)
+  }
+
+  /**
+   * [`async`] Getter method that gets the url specified to load in the browser.
+   * @param {string} url - The relative url path to load.
+   * @returns {Promise} The promise representing the browser get call.
+   */
+  async getUrl (url) {
+    if (!url || typeof url !== 'string') throw new TypeError('getUrl(url): url must be a populated String')
+    return browser.get(url)
+  }
+
+  /**
+   * [`async`] Method that runs the sequence of test steps previously specified.
+   * @returns {Promise} The promise chain of test steps.
+   */
+  async runSequence () {
+    return this[STEPS].reduce((promise, step) => promise.then(step), Promise.resolve())
+  }
+}
+
+export default Sequence
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Thu Mar 14 2019 07:57:47 GMT-0500 (Central Daylight Time) using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>
