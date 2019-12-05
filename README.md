@@ -2,7 +2,6 @@
 
 [![NPM Version][npm-image]][npm-url]
 [![License][license-image]][license-url]
-[![Build Status][circle-image]][circle-url]
 [![Code Coverage][codecov-image]][codecov-url]
 [![Dependency Status][depstat-image]][depstat-url]
 [![JavaScript Style Guide][style-image]][style-url]
@@ -141,8 +140,11 @@ Here is a simple example of an implementation using `test-automation`. When test
 - feature requests via [issues](https://github.com/fnalabs/test-automation/issues)
 
 ## Changelog
-#### v2.0.10
+#### v2.0.11
 - removing build status badge since CircleCI is only used for PR temporary branches
+
+#### v2.0.10
+- tweaks to CircleCI jobs
 
 #### v2.0.9
 - updated dependencies and scripts
@@ -187,9 +189,6 @@ Here is a simple example of an implementation using `test-automation`. When test
 
 [license-image]: https://img.shields.io/badge/License-MIT-blue.svg
 [license-url]: https://github.com/fnalabs/test-automation/blob/master/LICENSE
-
-[circle-image]: https://img.shields.io/circleci/project/github/fnalabs/test-automation.svg
-[circle-url]: https://circleci.com/gh/fnalabs/test-automation
 
 [codecov-image]: https://img.shields.io/codecov/c/github/fnalabs/test-automation/master.svg
 [codecov-url]: https://codecov.io/gh/fnalabs/test-automation
