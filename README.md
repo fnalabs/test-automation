@@ -141,6 +141,9 @@ Here is a simple example of an implementation using `test-automation`. When test
 - feature requests via [issues](https://github.com/fnalabs/test-automation/issues)
 
 ## Changelog
+#### v2.0.10
+- removing build status badge since CircleCI is only used for PR temporary branches
+
 #### v2.0.9
 - updated dependencies and scripts
 
