@@ -139,53 +139,7 @@ Here is a simple example of an implementation using `test-automation`. When test
 ## Future
 - feature requests via [issues](https://github.com/fnalabs/test-automation/issues)
 
-## Changelog
-#### v2.0.12
-- updating dev dependnecies
-
-#### v2.0.11
-- removing build status badge since CircleCI is only used for PR temporary branches
-
-#### v2.0.10
-- tweaks to CircleCI jobs
-
-#### v2.0.9
-- updated dependencies and scripts
-
-#### v2.0.8
-- updated dependencies
-
-#### v2.0.7
-- updated dependencies and documentation
-
-#### v2.0.6
-- updated dependencies and scripts
-
-#### v2.0.5
-- fixed broken links in README
-
-#### v2.0.4
-- updated homepage link in `package.json`
-
-#### v2.0.3
-- added documentation
-
-#### v2.0.2
-- updated name, license, and organization
-- updated dependencies
-
-#### v2.0.1
-- updated dependencies and configurations
-
-#### v2.0.0
-- added test methods on Fragment for common tests ([testText](#async-testtext-selector-text), [testState](#async-teststate-selector-state), [testAttribute](#async-testattribute-selector-attribute-text))
-- added action methods on Fragment for common actions ([elementClear](#async-elementclear-selector), [elementClick](#async-elementclick-selector), [elementSendKeys](#async-elementsendkeys-selector-keys), and [elementSubmit](#async-elementsubmit-selector))
-- updated Babel config to support native ES2017+ features
-- updated dependencies
-- removed Gulp
-
-#### v1.0.0
-- initial release
+## [Changelog](https://github.com/fnalabs/test-automation/releases)
 
 [npm-image]: https://img.shields.io/npm/v/test-automation.svg
 [npm-url]: https://www.npmjs.com/package/test-automation
