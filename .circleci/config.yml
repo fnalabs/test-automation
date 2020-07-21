@@ -3,7 +3,7 @@ version: 2.0
 jobs:
   checkout_code:
     docker:
-      - image: circleci/node:12.16.1
+      - image: circleci/node:12.18.2
     working_directory: ~/test-automation
     steps:
       - checkout
@@ -14,13 +14,13 @@ jobs:
 
   install_dependencies:
     docker:
-      - image: circleci/node:12.16.1
+      - image: circleci/node:12.18.2
     working_directory: ~/test-automation
     steps:
       - restore_cache:
           keys:
             - repo-{{ .Branch }}-{{ .Environment.CIRCLE_SHA1 }}
-      - run: npm install --no-optional
+      - run: npm ci --no-optional
       - save_cache:
           key: dependencies-{{ .Branch }}-{{ checksum "package.json" }}
           paths:
@@ -28,7 +28,7 @@ jobs:
 
   test:
     docker:
-      - image: circleci/node:12.16.1
+      - image: circleci/node:12.18.2
     working_directory: ~/test-automation
     steps:
       - restore_cache:
@@ -50,7 +50,7 @@ jobs:
 
   build:
     docker:
-      - image: circleci/node:12.16.1
+      - image: circleci/node:12.18.2
     working_directory: ~/test-automation
     steps:
       - restore_cache:
