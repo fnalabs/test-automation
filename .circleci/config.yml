@@ -20,7 +20,7 @@ jobs:
       - restore_cache:
           keys:
             - repo-{{ .Branch }}-{{ .Environment.CIRCLE_SHA1 }}
-      - run: npm install --no-optional
+      - run: npm ci --no-optional
       - save_cache:
           key: dependencies-{{ .Branch }}-{{ checksum "package.json" }}
           paths:
