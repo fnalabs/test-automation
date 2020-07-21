@@ -1,6 +1,6 @@
 {
   "name": "test-automation",
-  "version": "2.0.13",
+  "version": "2.0.14",
   "description": "Scaffolding on top of Protractor to follow a Page Object pattern for Automated browser tests.",
   "keywords": [
     "auto",
