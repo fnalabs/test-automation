@@ -5,6 +5,7 @@ src
 tmp*
 tst
 .*
+babel.config.json
 
 # Logs
 logs
