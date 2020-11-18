@@ -3,7 +3,7 @@ version: 2.0
 jobs:
   checkout_code:
     docker:
-      - image: circleci/node:14.15.0
+      - image: circleci/node:14.15.1
     working_directory: ~/test-automation
     steps:
       - checkout
@@ -14,7 +14,7 @@ jobs:
 
   install_dependencies:
     docker:
-      - image: circleci/node:14.15.0
+      - image: circleci/node:14.15.1
     working_directory: ~/test-automation
     steps:
       - restore_cache:
@@ -28,7 +28,7 @@ jobs:
 
   test:
     docker:
-      - image: circleci/node:14.15.0
+      - image: circleci/node:14.15.1
     working_directory: ~/test-automation
     steps:
       - restore_cache:
@@ -50,7 +50,7 @@ jobs:
 
   build:
     docker:
-      - image: circleci/node:14.15.0
+      - image: circleci/node:14.15.1
     working_directory: ~/test-automation
     steps:
       - restore_cache:
