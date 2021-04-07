@@ -3,7 +3,6 @@
 [![NPM Version][npm-image]][npm-url]
 [![License][license-image]][license-url]
 [![Code Coverage][codecov-image]][codecov-url]
-[![Dependency Status][depstat-image]][depstat-url]
 [![JavaScript Style Guide][style-image]][style-url]
 
 The purpose of `test-automation` is to provide some scaffolding on top of [protractor](http://www.protractortest.org/) to follow a Page Object pattern for Automated browser tests. The framework contains some classes to help structure and automate your tests. This is developed in parallel with the [test-automation-starter](https://github.com/fnalabs/test-automation-starter) kit as the framework the Docker implementation is built upon. The starter kit has more of a complete example than what is provided below. The intent of the project is to provide the necessary tools and a starting point to rapidly develop automated browser tests.
@@ -167,9 +166,6 @@ Here is a simple example of an implementation using `test-automation`. When test
 
 [codecov-image]: https://codecov.io/gh/fnalabs/test-automation/branch/master/graph/badge.svg
 [codecov-url]: https://codecov.io/gh/fnalabs/test-automation
-
-[depstat-image]: https://img.shields.io/david/fnalabs/test-automation.svg
-[depstat-url]: https://david-dm.org/fnalabs/test-automation
 
 [style-image]: https://img.shields.io/badge/code_style-standard-brightgreen.svg
 [style-url]: https://standardjs.com
